@@ -1,0 +1,202 @@
+h2{
+    color: #6dac62;
+    font-size: 200px;
+    padding: 30px;
+}
+button{
+    color: #6dac62;
+}
+
+.academia{
+    font-weight: bold;
+}
+
+
+.home-about-section{
+    padding: 30px 0 70px 0;
+}
+
+.link{
+  color: #6dac62;
+}
+
+/*---------------------
+  HEADER
+-----------------------*/
+.main {
+    padding-left: 4em;
+    padding-right: 4em;
+}
+
+
+
+.avatar {
+  max-width: 48px;
+  max-height: 48px;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: inherit;
+}
+
+
+/* The sidebar menu */
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 240px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #818181;
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+
+
+/*---------------------
+  Member Item
+-----------------------*/
+
+.team-member-section {
+    overflow: hidden;
+    background-color: #f8f8f8;
+}
+
+.member-item {
+	width: 20%;
+	float: left;
+	height: 420px;
+	position: relative;
+    overflow: hidden;
+    padding-bottom: 60px;
+}
+
+.member-item:hover .mi-social {
+	top: 0;
+}
+
+.member-item:hover .mi-text {
+	left: 20px;
+}
+
+.member-item .mi-social {
+	text-align: center;
+	position: relative;
+	top: -60px;
+	-webkit-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+
+.member-item .mi-social .mi-social-inner {
+	display: inline-block;
+	padding: 10px 23px 8px;
+	border-radius: 0 0 4px 4px;
+}
+
+.member-item .mi-social .mi-social-inner a {
+	display: inline-block;
+	font-size: 18px;
+	color: #ffffff;
+	margin-right: 10px;
+}
+
+.member-item .mi-social .mi-social-inner a:last-child {
+	margin-right: 0;
+}
+
+.member-item .mi-text {
+	background: #ffffff;
+	padding: 16px 0 18px 25px;
+	position: absolute;
+	left: -500px;
+	bottom: 20px;
+	width: calc(100% - 40px);
+	-webkit-transition: all 0.5s ease-out;
+	-o-transition: all 0.5s ease-out;
+	transition: all 0.5s ease-out;
+}
+
+.member-item .mi-text h5 {
+	font-size: 20px;
+	color: #171822;
+	font-weight: 600;
+	margin-bottom: 5px;
+}
+
+.member-item .mi-text span {
+	font-size: 16px;
+	color: #f44949;
+	display: block;
+}
+
+.nav-menu .mainmenu ul li .dropdown {
+	position: absolute;
+	width: 240px;
+	background: #ffffff;
+	z-index: 99;
+	left: 0;
+	top: 130px;
+	opacity: 0;
+	visibility: hidden;
+	-webkit-box-shadow: 4px 13px 30px rgba(0, 0, 0, 0.15);
+	box-shadow: 4px 13px 30px rgba(0, 0, 0, 0.15);
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.nav-menu .mainmenu ul li .dropdown li {
+	display: block;
+	margin-right: 0;
+}
+
+.nav-menu .mainmenu ul li .dropdown li a {
+	padding: 8px 10px;
+	display: block;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+	text-transform: capitalize;
+}
+
+.nav-menu .mainmenu ul li .dropdown li a:hover {
+	color: #f44949;
+}
+
+.nav-menu .mainmenu ul li .dropdown li a:after {
+	display: none;
+}
+
+.nav-menu .mainmenu ul li.active a:after {
+	opacity: 1;
+}
+
+.nav-menu .mainmenu ul li:hover>a:after {
+	opacity: 1;
+}
+
+.nav-menu .mainmenu ul li:hover .dropdown {
+	opacity: 1;
+	visibility: visible;
+	top: 100px;
+}
+
