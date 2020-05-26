@@ -18,25 +18,33 @@
         </div>
 
 
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card-body">
-                        <div class="bi-text">
-                            <h5><a class="btn font-weight-bold" href="#"> titre du cours </a></h5>
-                            <span><i class="fa fa-clock-o"></i> 23-09-2020</span>
+
+
+    <div class="row">
+        @if (count(Auth::user()->cours)>0)
+            @foreach (Auth::user()->cours as $elementcours)
+                    <div class="col-md-4">
+                        <div class="card-body">
+                            <div class="bi-text">
+                                <h5><a class="btn font-weight-bold" href="#"> {{$elementcours->nom}} </a></h5>
+                                <span><i class="fa fa-clock-o"></i> {{$elementcours->created_at}}</span>
+                            </div>
+                        </div>
+                    <div class="blog-item set-bg" data-setbg="/storage/cours/{{$elementcours->user_id}}/{{$elementcours->image}}">
+                        </div>
+                        <div class="btn-actions d-flex justify-content-center">
+                            <a href=" # " class="btn  primary-btn btn-lg btn-success">
+                                <i class="fas fa-edit"></i>
+                                Modifier
+                            </a>
                         </div>
                     </div>
-                <div class="blog-item set-bg" data-setbg="{{ asset('img/hero.jpg') }}">
-                    </div>
-                    <div class="btn-actions d-flex justify-content-center">
-                        <a href=" # " class="btn  primary-btn btn-lg btn-success">
-                            <i class="fas fa-edit"></i>
-                            Modifier
-                        </a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
 
+        @else
+            <div class="jumbotron">Vous n'avez pas encore renseigné de cours</div>
+        @endif
+    </div>
 
 
 

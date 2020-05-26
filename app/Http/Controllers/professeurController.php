@@ -22,7 +22,7 @@ class professeurController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   $cours=Cours::all();
         return view('professeur.index');
     }
 
