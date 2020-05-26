@@ -21,7 +21,7 @@
 
                         <div class="col-lg-12">
                             <label for="objectifs">Objectifs du cours</label>
-                            <textarea type="textarea" placeholder="Avec quelles compétences les apprenants repartiront à la fin de votre cours?" name="objectifs"></textarea>
+                            <textarea type="textarea" placeholder="Avec quelles compétences les apprenants repartiront à la fin de votre cours?" name="objectif"></textarea>
                         </div>
 
                         <div class="col-lg-12">

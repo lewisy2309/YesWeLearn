@@ -69,7 +69,7 @@ class professeurController extends Controller
         $matiere=Matiere::find($request->input('matieres'));
         $niveau->matiere()->sync($matiere);
         $cours->save();
-        return redirect()->route('professeur.index');
+        return redirect()->route('vueprofilprofesseur');
 
 
 
