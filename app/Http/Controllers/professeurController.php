@@ -51,10 +51,10 @@ class professeurController extends Controller
     {
         $slugify= new Slugify();
         $cours = new Cours();
-        $cours->title=$request->input('nom');
+        $cours->nom=$request->input('nom');
         $cours->slug=$slugify->slugify($cours->title);
-        $cours->subtitle=$request->input('description');
-        $cours->description=$request->input('objectif');
+        $cours->description=$request->input('description');
+        $cours->objectif=$request->input('objectif');
         $cours->matiere_id=$request->input('matieres');
         $cours->user_id=Auth::user()->id;
 
@@ -65,8 +65,14 @@ class professeurController extends Controller
         $file = time().'_'.$imageName.'_'.$extension;
         $image->storeAs('public/cours/'. Auth::user()->id , $file);
         $cours->image=$file;
+        $niveau=Niveau::find($request->input('niveau'));
+        $matiere=Matiere::find($request->input('matieres'));
+        $niveau->matiere()->sync($matiere);
         $cours->save();
         return redirect()->route('professeur.index');
+
+
+
     }
 
     /**

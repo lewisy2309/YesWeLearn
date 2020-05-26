@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <label for="title">Titre du cours</label>
-                            <input type="text" placeholder="Le titre de votre cours" name="title">
+                            <input type="text" placeholder="Le titre de votre cours" name="nom">
                         </div>
 
                         <div class="col-lg-12">
