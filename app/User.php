@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Cours;
+use App\Niveau;
 use App\Statut;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -18,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','niveau_id'
     ];
 
     /**
@@ -39,11 +40,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function status(){
+    public function statut(){
         return $this->belongsToMany('app\Statut');
     }
 
     public function cours(){
         return $this->hasMany('app\Cours');
+    }
+
+    public function niveau(){
+        return $this->belongsTo('app\Niveau');
     }
 }

@@ -9,4 +9,8 @@ class Niveau extends Model
     public function matiere(){
         return $this->belongsToMany('app\Matiere');
     }
+
+    public function user(){
+        return $this->hasMany('app\User');
+    }
 }

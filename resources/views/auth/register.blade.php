@@ -39,6 +39,28 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group row">
+                            <label for="niveau" class="col-md-4 col-form-label text-md-right">{{ __('Niveau') }}</label>
+
+                            <div class="col-md-6">
+                                <select class="form-control" name="niveau">
+
+                                        <option value="1">6E</option>
+                                        <option value="2">5E</option>
+                                        <option value="3">4E</option>
+                                        <option value="4">3E</option>
+                                        <option value="5">2ND LE</option>
+                                        <option value="6">2ND S</option>
+                                        <option value="7">1ERE LE</option>
+                                        <option value="8">1ERE S</option>
+                                        <option value="9">TLE LE</option>
+                                        <option value="10">TLE S</option>
+
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
