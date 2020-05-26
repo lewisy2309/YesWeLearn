@@ -7,6 +7,7 @@ use App\Niveau;
 use App\Matiere;
 use Cocur\Slugify\Slugify;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class professeurController extends Controller
 {
@@ -49,23 +50,23 @@ class professeurController extends Controller
     public function store(Request $request)
     {
         $slugify= new Slugify();
-        $course = new Course();
-        $course->title=$request->input('title');
-        $course->slug=$slugify->slugify($course->title);
-        $course->subtitle=$request->input('subtitle');
-        $course->description=$request->input('description');
-        $course->category_id=$request->input('category');
-        $course->user_id=Auth::user()->id;
+        $cours = new Cours();
+        $cours->title=$request->input('nom');
+        $cours->slug=$slugify->slugify($cours->title);
+        $cours->subtitle=$request->input('description');
+        $cours->description=$request->input('objectif');
+        $cours->matiere_id=$request->input('matieres');
+        $cours->user_id=Auth::user()->id;
 
         $image =$request->file('image');
         $imageFullName= $image->getClientOriginalName();
         $imageName=pathInfo($imageFullName, PATHINFO_FILENAME );
         $extension=$image->getClientOriginalExtension();
         $file = time().'_'.$imageName.'_'.$extension;
-        $image->storeAs('public/courses/'. Auth::user()->id , $file);
-        $course->image=$file;
-        $course->save();
-        return redirect()->route('instructor.index');
+        $image->storeAs('public/cours/'. Auth::user()->id , $file);
+        $cours->image=$file;
+        $cours->save();
+        return redirect()->route('professeur.index');
     }
 
     /**
