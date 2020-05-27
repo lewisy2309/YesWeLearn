@@ -42,4 +42,11 @@ Route::put('/professeur/{id}/majcours', 'professeurController@update')->name('pr
 Route::get('/professeur/{id}/supprimercours', 'professeurController@destroy')->name('professeursupprimercours');
 
 
+Route::get('professeur/cours/{id}/contenucours', 'contenucoursController@index')->name('contenucoursaccueil');
+
+Route::get('professeur/cours/{id}/contenucours/ajouterchapitre', 'contenucoursController@create')->name('contenucourscreerchapitre');
+
+Route::post('professeur/cours/{id}/contenucours/sauvegarder', 'contenucoursController@store')->name('contenucourscreerchapitreenregistrer');
+
+
 

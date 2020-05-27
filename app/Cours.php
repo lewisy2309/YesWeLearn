@@ -18,4 +18,8 @@ class Cours extends Model
         return $this->belongsTo('app\Niveau');
     }
 
+    public function chapitre(){
+      return $this->hasMany('app\Chapitre');
+    }
+
 }
