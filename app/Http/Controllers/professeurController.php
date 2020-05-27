@@ -22,8 +22,13 @@ class professeurController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   $cours=Cours::all();
-        return view('professeur.index');
+    {   $matieres=Matiere::all();
+        $niveaux=Niveau::all();
+        $cours=Cours::all();
+        return view('professeur.index', [
+            'matieres'=>$matieres,
+            'niveaux'=>$niveaux
+        ]);
     }
 
     /**
@@ -56,8 +61,8 @@ class professeurController extends Controller
         $cours->description=$request->input('description');
         $cours->objectif=$request->input('objectif');
         $cours->matiere_id=$request->input('matieres');
+        $cours->niveau_id=$request->input('niveau');
         $cours->user_id=Auth::user()->id;
-
         $image =$request->file('image');
         $imageFullName= $image->getClientOriginalName();
         $imageName=pathInfo($imageFullName, PATHINFO_FILENAME );
@@ -69,7 +74,7 @@ class professeurController extends Controller
         $matiere=Matiere::find($request->input('matieres'));
         $niveau->matiere()->sync($matiere);
         $cours->save();
-        return redirect()->route('vueprofilprofesseur');
+        return redirect()->route('vueprofilprofesseur')->with('success', 'Le cours a bien été ajouté');;
 
 
 
@@ -94,7 +99,15 @@ class professeurController extends Controller
      */
     public function edit($id)
     {
-        //
+        $matieres=Matiere::all();
+        $niveaux=Niveau::all();
+        $cours=Cours::find($id);
+        return view('professeur.edit',[
+            'cours'=>$cours,
+            'matieres'=>$matieres,
+            'niveaux'=>$niveaux,
+        ]
+    );
     }
 
     /**
@@ -106,7 +119,27 @@ class professeurController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cours=Cours::find($id);
+        $slugify= new slugify();
+        $cours->nom=$request->input('nom');
+        $cours->slug=$slugify->slugify('nom');
+        $cours->description=$request->input('description');
+        $cours->objectif=$request->input('objectif');
+        $cours->matiere_id=$request->input('matiere');
+        $cours->niveau_id=$request->input('niveau');
+
+        if($request->file('image')){
+            $image =$request->file('image');
+            $imageFullName= $image->getClientOriginalName();
+            $imageName=pathInfo($imageFullName, PATHINFO_FILENAME );
+            $extension=$image->getClientOriginalExtension();
+            $file = time().'_'.$imageName.'_'.$extension;
+            $image->storeAs('public/cours/'. Auth::user()->id , $file);
+            $cours->image=$file;
+        }
+
+        $cours->save();
+        return redirect()->route('vueprofilprofesseur')->with('success', 'Les modification pour votre cours ont bien été apportées');
     }
 
     /**
@@ -117,6 +150,8 @@ class professeurController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cours=Cours::find($id);
+        $cours->delete();
+        return redirect()->route('vueprofilprofesseur')->with('success', 'Le cours a bien été supprimé');
     }
 }

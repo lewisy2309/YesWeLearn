@@ -1,4 +1,4 @@
-@extends('layouts.instructor-app')
+@extends('layouts.professeur-app')
 
 @section('content')
 
@@ -6,30 +6,45 @@
     <div class="container">
         <div class="d-flex justify-content-center">
             <div class="col-lg-8">
-                <form action="#" class="comment-form contact-form" method="POST" enctype="multipart/form-data">
+            <form action="{{route('professeurmajcours',$cours->id)}}" class="comment-form contact-form" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="col-lg-12">
-                            <label for="title">Titre du cours</label>
-                            <input type="text" placeholder="Name" name="title" value="Titre du cours">
-                        </div>
-                        <div class="col-lg-12">
-                            <label for="subtitle">Sous-titre du cours</label>
-                            <input type="text" placeholder="Email" name="subtitle" value="Sous-tite du cours">
+                            <label for="nom">Titre du cours</label>
+                            <input type="text" placeholder="Name" name="nom" value="{{$cours->nom}}">
                         </div>
                         <div class="col-lg-12">
                             <label for="description">Description du cours</label>
-                            <textarea type="textarea" placeholder="Phone" name="description">Description du cours</textarea>
+                            <textarea type="textarea" placeholder="Phone" name="description">{{$cours->description}}</textarea>
                         </div>
                         <div class="col-lg-12">
-                            <select class="form-control" name="category">
-                                <option value="cat">Catégorie</option>
-                            </select>
+                            <label for="objectif">Objectifs du cours</label>
+                            <textarea type="textarea" placeholder="Phone" name="objectif">{{$cours->objectif}}</textarea>
+                        </div>
+                        <div class="col-lg-12">
+                            <label for="matiere">Matiere:</label>
+                                <select class="form-control" name="matiere">
+                                    @foreach ($matieres as $matiere)
+                                        <option value="{{$matiere->id}}"  {{$cours->matiere_id == $matiere->id ? 'selected' : '' }}>{{$matiere->nom}}</option>
+                                    @endforeach
+                                </select>
+
+                        </div>
+                        <div class="col-lg-12">
+                            <label for="niveau">Niveau:</label>
+                                <select class="form-control" name="niveau">
+                                    @foreach ($niveaux as $niveau)
+                                        <option value="{{$niveau->id}}" {{$cours->niveau_id == $niveau->id ? 'selected' : '' }}>{{$niveau->nom}}</option>
+                                    @endforeach
+                                </select>
+
                         </div>
                         <div class="col-lg-12 mt-5">
                             <label for="image">Image du cours</label>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <img src="https://blog.hyperiondev.com/wp-content/uploads/2019/02/Blog-Types-of-Web-Dev.jpg"/>
+                                    <img src="/storage/cours/{{Auth::user()->id}}/{{$cours->image}}"/>
                                 </div>
                                 <div class="col-lg-6">
                                     <input type="file" name="image"/>

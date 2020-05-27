@@ -21,6 +21,7 @@ class CreateCoursTable extends Migration
             $table->text('objectif');
             $table->text('image');
             $table->bigInteger('matiere_id');
+            $table->bigInteger('niveau_id');
             $table->bigInteger('user_id');
             $table->timestamps();
         });

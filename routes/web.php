@@ -35,5 +35,11 @@ Route::get('/professeur/creationcours', 'professeurController@create')->name('pr
 
 Route::post('/professeur/creationenregistrer', 'professeurController@store')->name('professeurenregistrementcours');
 
+Route::get('/professeur/{id}/modifiercours', 'professeurController@edit')->name('professeurmodifiercours');
+
+Route::put('/professeur/{id}/majcours', 'professeurController@update')->name('professeurmajcours');
+
+Route::get('/professeur/{id}/supprimercours', 'professeurController@destroy')->name('professeursupprimercours');
+
 
 

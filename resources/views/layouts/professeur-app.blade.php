@@ -21,12 +21,12 @@
   </head>
   <body>
     <div class="wrapper d-flex align-items-stretch text-left">
-      @include('incs.instructor.course-sidebar')
+      @include('incs.professeur.lesson-sidebar')
 
         <!-- Page Content  -->
         <div id="content" class="p-4 p-md-5">
           @if (Request::is('professeur/*'))
-              @include('incs.instructor.header')
+              @include('incs.professeur.header')
           @else
               @include('incs.header')
           @endif

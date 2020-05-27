@@ -27,13 +27,16 @@
                         <div class="card-body">
                             <div class="bi-text">
                                 <h5><a class="btn font-weight-bold" href="#"> {{$elementcours->nom}} </a></h5>
-                                <span><i class="fa fa-clock-o"></i> {{$elementcours->created_at}}</span>
+                                <span><i class="fa fa-clock-o"></i> {{$elementcours->created_at}}</span><br>
+                                <span> Matiere : {{$elementcours->matiere->nom}}</span><br>
+                                <span> Niveau : {{$elementcours->niveau->nom}}</span><br>
+
                             </div>
                         </div>
                     <div class="blog-item set-bg" data-setbg="/storage/cours/{{$elementcours->user_id}}/{{$elementcours->image}}">
                         </div>
                         <div class="btn-actions d-flex justify-content-center">
-                            <a href=" # " class="btn  primary-btn btn-lg btn-success">
+                            <a href=" {{route('professeurmodifiercours',$elementcours->id)}} " class="btn  primary-btn btn-lg btn-success">
                                 <i class="fas fa-edit"></i>
                                 Modifier
                             </a>

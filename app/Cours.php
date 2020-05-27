@@ -14,4 +14,8 @@ class Cours extends Model
         return $this->belongsTo('app\Matiere');
     }
 
+    public function niveau(){
+        return $this->belongsTo('app\Niveau');
+    }
+
 }
