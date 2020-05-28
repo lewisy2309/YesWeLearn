@@ -48,5 +48,14 @@ Route::get('professeur/cours/{id}/contenucours/ajouterchapitre', 'contenucoursCo
 
 Route::post('professeur/cours/{id}/contenucours/sauvegarder', 'contenucoursController@store')->name('contenucourscreerchapitreenregistrer');
 
+Route::get('professeur/cours/{id}/contenucours/{chapitre}/edit', 'contenucoursController@edit')->name('contenucoursmodifierchapitre');
+
+Route::put('professeur/cours/{id}/contenucours/{chapitre}/update', 'contenucoursController@update')->name('contenucoursmodifierchapitremaj');
+
+Route::get('professeur/cours/{id}/contenucours/{chapitre}/delete', 'contenucoursController@destroy')->name('contenucourssupprimerchapitre');
+
+
+
+Route::get('/professeur/ajouter/epreuve/examen', 'ajoutExamenController@index')->name('ajouteenonceexamen');
 
 

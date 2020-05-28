@@ -51,4 +51,8 @@ class User extends Authenticatable
     public function niveau(){
         return $this->belongsTo('app\Niveau');
     }
+
+    public function enonce_examen(){
+        return $this->hasMany('app\Enonce_examen');
+    }
 }

@@ -4,16 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Matiere extends Model
+class Examen extends Model
 {
-
-
     public function niveau(){
-        return $this->belongsToMany('App\Niveau');
-    }
-
-    public function cours(){
-        return $this->hasMany('app\Cours');
+        return $this->belongsTo('app\Niveau');
     }
 
     public function enonce_examen(){

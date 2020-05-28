@@ -7,10 +7,18 @@ use App\Cours;
 use App\Chapitre;
 use Cocur\Slugify\Slugify;
 use Illuminate\Http\Request;
+use App\http\managers\VideoManager;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class contenucoursController extends Controller
 {
+
+    public function __construct(videoManager $videoManager){
+        $this->videoManager=$videoManager;
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -46,6 +54,7 @@ class contenucoursController extends Controller
      */
     public function store(Request $request, $id)
     {
+
        $slugify= new Slugify();
        $chapitre= new Chapitre();
        $cours=Cours::find($id);
@@ -53,21 +62,14 @@ class contenucoursController extends Controller
        $chapitre->nom=$request->input('chapitre_nom');
        $chapitre->slug=$slugify->slugify($chapitre->nom);
 
+// stockage de la video
+       $video=$this->videoManager->videoStorage($request->file('video_chapitre'));
 
-       $video=$request->file('video_chapitre');
-       $filefullname=$video->getClientOriginalName();
-       $fileName=pathinfo($filefullname,PATHINFO_FILENAME);
-       $extension=$video->getClientOriginalExtension();
-       $file=time().'_'.$fileName.'.'.$extension;
-       $video->storeAs('public/cours_chapitres/'.Auth::user()->id, $file);
 
-       $chapitre->video=$file;
+       $chapitre->video=$video;
        $chapitre->cours_id=$id;
-
-       $getID3= new getID3;
-       $pathvideo='storage/cours_chapitres/'.Auth::user()->id.'/'.$file;
-       $fileanalyse=$getID3->analyze($pathvideo);
-       $playtime=$fileanalyse['playtime_string'];
+// recupération du temps total de la vidéo
+        $playtime=$this->videoManager->getVideoDuration($video);
         $chapitre->duree_seconde=$playtime;
 
 
@@ -94,9 +96,14 @@ class contenucoursController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id , $chapitre_id)
     {
-        //
+        $cours=Cours::find($id);
+        $chapitre=Chapitre::find($chapitre_id);
+        return view('professeur.contenucours.edit',[
+            'cours'=>$cours,
+            'chapitre'=>$chapitre
+        ]);
     }
 
     /**
@@ -106,9 +113,28 @@ class contenucoursController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id,$chapitre_id)
     {
-        //
+        $slugify=new Slugify();
+        $cours=Cours::find($id);
+        $chapitre=Chapitre::find($chapitre_id);
+        if($request->input('chapitre_nom')){
+            // mise à jour du nom du chapitre
+            $chapitre->nom = $request->input('chapitre_nom');
+            $chapitre->slug = $slugify->slugify('$chapitre->nom');
+        }
+
+        if($request->file('chapitre_video')){
+            // mise à jour de la vidéo du chapitre
+            $video=$this->videoManager->videoStorage($request->file('chapitre_video'));
+            $chapitre->video=$video;
+
+            $chapitre->duree_seconde=$this->videoManager->getVideoDuration($video);
+
+        }
+
+        $chapitre->save();
+        return redirect()->route('contenucoursaccueil', $cours->id)->with('success','la section a bien été modifiée');
     }
 
     /**
@@ -117,8 +143,16 @@ class contenucoursController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,$chapitre_id)
     {
-        //
+        $cours=Cours::find($id);
+        $chapitre=Chapitre::find($chapitre_id);
+        $fichierasupprimer='public/cours_chapitres/'.Auth::user()->id.'/'.$chapitre->video;
+        if(Storage::exists($fichierasupprimer)){
+            Storage::delete($fichierasupprimer);
+        }
+
+        $chapitre->delete();
+        return redirect()->route('contenucoursaccueil', $cours->id);
     }
 }
