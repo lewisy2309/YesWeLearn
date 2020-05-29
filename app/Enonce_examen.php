@@ -7,16 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Enonce_examen extends Model
 {
    public function examen(){
-        $this->belongsTo('app\Examen');
+        return $this->belongsTo('app\Examen');
    }
 
 
    public function matiere(){
-    $this->belongsTo('app\Matiere');
+     return $this->belongsTo('app\Matiere');
     }
 
 
     public function user(){
-    $this->belongsTo('app\User');
+    return $this->belongsTo('app\User');
     }
 }

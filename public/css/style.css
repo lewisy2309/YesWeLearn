@@ -346,7 +346,7 @@ ol {
 }
 
 .nav-menu .mainmenu ul li .dropdown li a:hover {
-	color: #f44949;
+	color: #6dac62;
 }
 
 .nav-menu .mainmenu ul li .dropdown li a:after {
@@ -383,7 +383,7 @@ ol {
 	bottom: 36px;
 	height: 2px;
 	width: 100%;
-	background: #F44949;
+	background: #6dac62;
 	content: "";
 	opacity: 0;
 	-webkit-transition: all 0.3s;

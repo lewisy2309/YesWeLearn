@@ -56,6 +56,10 @@ Route::get('professeur/cours/{id}/contenucours/{chapitre}/delete', 'contenucours
 
 
 
-Route::get('/professeur/ajouter/epreuve/examen', 'ajoutExamenController@index')->name('ajouteenonceexamen');
+Route::get('/professeur/ajouter/examen/enonce', 'ajoutExamenController@index')->name('ajouterenonceexamen');
+
+Route::get('/professeur/ajouter/examen/enonce/creer', 'ajoutExamenController@create')->name('ajouterenonceexamencreer');
+
+Route::post('/professeur/ajouter/examen/enonce/creer/savegarder', 'ajoutExamenController@store')->name('ajouterenonceexamencreersauvegarder');
 
 

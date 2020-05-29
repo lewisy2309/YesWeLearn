@@ -67,14 +67,14 @@ class professeurController extends Controller
         $imageFullName= $image->getClientOriginalName();
         $imageName=pathInfo($imageFullName, PATHINFO_FILENAME );
         $extension=$image->getClientOriginalExtension();
-        $file = time().'_'.$imageName.'_'.$extension;
+        $file = time().'_'.$imageName.'.'.$extension;
         $image->storeAs('public/cours/'. Auth::user()->id , $file);
         $cours->image=$file;
         $niveau=Niveau::find($request->input('niveau'));
         $matiere=Matiere::find($request->input('matieres'));
         $niveau->matiere()->sync($matiere);
         $cours->save();
-        return redirect()->route('vueprofilprofesseur')->with('success', 'Le cours a bien été ajouté');;
+        return redirect()->route('vueprofilprofesseur')->with('success', 'Le cours a bien été ajouté');
 
 
 
