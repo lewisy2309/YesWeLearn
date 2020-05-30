@@ -62,4 +62,6 @@ Route::get('/professeur/ajouter/examen/enonce/creer', 'ajoutExamenController@cre
 
 Route::post('/professeur/ajouter/examen/enonce/creer/savegarder', 'ajoutExamenController@store')->name('ajouterenonceexamencreersauvegarder');
 
+Route::get('professeur/ajouter/examen/enonce/{id}/delete', 'ajoutExamenController@destroy')->name('supprimerenonceexamen');
+
 

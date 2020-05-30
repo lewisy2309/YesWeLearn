@@ -9,6 +9,7 @@ use App\Enonce_examen;
 use Cocur\Slugify\Slugify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ajoutExamenController extends Controller
 {
@@ -19,9 +20,12 @@ class ajoutExamenController extends Controller
      */
     public function index()
     {
-
+        $matiere=Matiere::all();
+        $examen=examen::all();
         $enonce_examen=Enonce_examen::all();
         return view('professeur.examen.index',[
+            'examen'=>$examen,
+            'matiere'=>$matiere,
             'enonce_examen'=>$enonce_examen
         ]);
     }
@@ -110,6 +114,12 @@ class ajoutExamenController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $enonce_examen=Enonce_examen::find($id);
+        $fichierasupprimer='public/enonce_examen/'. Auth::user()->id.'/'.$enonce_examen->document;
+        if(Storage::exists($fichierasupprimer)){
+            Storage::delete($fichierasupprimer);
+        }
+        $enonce_examen->delete();
+        return redirect()->route('ajouterenonceexamen')->with('success', 'Enonce supprimé');
     }
 }

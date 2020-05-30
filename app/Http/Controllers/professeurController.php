@@ -133,7 +133,7 @@ class professeurController extends Controller
             $imageFullName= $image->getClientOriginalName();
             $imageName=pathInfo($imageFullName, PATHINFO_FILENAME );
             $extension=$image->getClientOriginalExtension();
-            $file = time().'_'.$imageName.'_'.$extension;
+            $file = time().'_'.$imageName.'.'.$extension;
             $image->storeAs('public/cours/'. Auth::user()->id , $file);
             $cours->image=$file;
         }
