@@ -91,7 +91,11 @@ class ajoutExamenController extends Controller
      */
     public function edit($id)
     {
-        //
+        $enonce=Enonce_examen::find($id);
+
+        return view('professeur.examen.edit',[
+            'enonce'=>$enonce
+        ]);
     }
 
     /**
@@ -103,7 +107,26 @@ class ajoutExamenController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $slugify=new Slugify();
+        // $cours=Cours::find($id);
+        // $chapitre=Chapitre::find($chapitre_id);
+        // if($request->input('chapitre_nom')){
+        //     // mise à jour du nom du chapitre
+        //     $chapitre->nom = $request->input('chapitre_nom');
+        //     $chapitre->slug = $slugify->slugify('$chapitre->nom');
+        // }
+
+        // if($request->file('chapitre_video')){
+        //     // mise à jour de la vidéo du chapitre
+        //     $video=$this->videoManager->videoStorage($request->file('chapitre_video'));
+        //     $chapitre->video=$video;
+
+        //     $chapitre->duree_seconde=$this->videoManager->getVideoDuration($video);
+
+        // }
+
+        // $chapitre->save();
+        // return redirect()->route('contenucoursaccueil', $cours->id)->with('success','la section a bien été modifiée');
     }
 
     /**
