@@ -64,4 +64,11 @@ Route::post('/professeur/ajouter/examen/enonce/creer/savegarder', 'ajoutExamenCo
 
 Route::get('professeur/ajouter/examen/enonce/{id}/delete', 'ajoutExamenController@destroy')->name('supprimerenonceexamen');
 
+Route::get('professeur/ajouter/examen/enonce/{id}/edit', 'ajoutExamenController@edit')->name('enonceexamenmodifier');
+
+Route::put('professeur/ajouter/examen/enonce/{id}/update', 'ajoutExamenController@update')->name('enonceexamenmaj');
+
+
+
+
 

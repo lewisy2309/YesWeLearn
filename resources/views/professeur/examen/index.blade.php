@@ -27,7 +27,7 @@
                     <li class="list-group-item d-flex flex-row justify-content-between">
                         {{$enonce->nom}} {{$enonce->matiere->nom}} {{$enonce->examen->nom}}
                         <div>
-                            <a href="#" role="button" class="btn btn-secondary">modifier</a>
+                            <a href="{{route('enonceexamenmodifier',$enonce->id)}}" role="button" class="btn btn-secondary">modifier</a>
                             <a href="{{route('supprimerenonceexamen',$enonce->id)}}" role="button" class="btn btn-danger">supprimer</a>
                         </div>
                     </li>

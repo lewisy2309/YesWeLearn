@@ -17,6 +17,7 @@
                         <div class="jumbotron py-3">
                             <h4 class="my-3">Eléments du chapitre :</h4>
                             <div class="row">
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                     <input class="form-control" type="text" id="chapitre_nom" name="chapitre_nom" value="{{$chapitre->nom}}"/>

@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Storage;
 
 class ajoutExamenController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +31,7 @@ class ajoutExamenController extends Controller
         return view('professeur.examen.index',[
             'examen'=>$examen,
             'matiere'=>$matiere,
-            'enonce_examen'=>$enonce_examen
+            'enonce_examen'=>$enonce_examen,
         ]);
     }
 
@@ -92,9 +97,12 @@ class ajoutExamenController extends Controller
     public function edit($id)
     {
         $enonce=Enonce_examen::find($id);
-
+        $matieres=Matiere::All();
+        $examens=Examen::all();
         return view('professeur.examen.edit',[
-            'enonce'=>$enonce
+            'enonce'=>$enonce,
+            'matieres'=>$matieres,
+            'examens'=>$examens,
         ]);
     }
 
@@ -107,26 +115,37 @@ class ajoutExamenController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $slugify=new Slugify();
-        // $cours=Cours::find($id);
-        // $chapitre=Chapitre::find($chapitre_id);
-        // if($request->input('chapitre_nom')){
-        //     // mise à jour du nom du chapitre
-        //     $chapitre->nom = $request->input('chapitre_nom');
-        //     $chapitre->slug = $slugify->slugify('$chapitre->nom');
-        // }
+        $slugify=new Slugify();
+        $enonce=Enonce_examen::find($id);
 
-        // if($request->file('chapitre_video')){
-        //     // mise à jour de la vidéo du chapitre
-        //     $video=$this->videoManager->videoStorage($request->file('chapitre_video'));
-        //     $chapitre->video=$video;
+        $enonce->matiere_id=$request->input('enonce_matiere');
+        $enonce->examen_id=$request->input('enonce_examen');
 
-        //     $chapitre->duree_seconde=$this->videoManager->getVideoDuration($video);
+        if($request->input('enonce_nom')){
+            // mise à jour du nom de l'énoncé à l'examen
+            $enonce->nom = $request->input('enonce_nom');
+            $enonce->slug = $slugify->slugify($enonce->nom);
+        }
 
-        // }
+        if($request->file('enonce_document')){
+            // Suppression de l'ancien fichier présent dans le server
+            $fichierasupprimer='public/enonce_examen/'. Auth::user()->id.'/'.$enonce->document;
+            if(Storage::exists($fichierasupprimer)){
+                Storage::delete($fichierasupprimer);
+            }
+                // mise à jour de la vidéo du chapitre
+            $document =$request->file('enonce_document');
+            $documentFullName= $document->getClientOriginalName();
+            $imageName=pathInfo($documentFullName, PATHINFO_FILENAME );
+            $extension=$document->getClientOriginalExtension();
+            $file = time().'_'.$imageName.'.'.$extension;
+            $document->storeAs('public/enonce_examen/'. Auth::user()->id , $file);
+            $enonce->document=$file;
+        }
 
-        // $chapitre->save();
-        // return redirect()->route('contenucoursaccueil', $cours->id)->with('success','la section a bien été modifiée');
+
+        $enonce->save();
+        return redirect()->route('ajouterenonceexamen')->with('success','Enoncé modifié');
     }
 
     /**

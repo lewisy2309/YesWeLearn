@@ -14,8 +14,12 @@ use Illuminate\Support\Facades\Storage;
 class contenucoursController extends Controller
 {
 
+
+
     public function __construct(videoManager $videoManager){
         $this->videoManager=$videoManager;
+
+        $this->middleware('auth');
 
     }
 
@@ -121,7 +125,7 @@ class contenucoursController extends Controller
         if($request->input('chapitre_nom')){
             // mise à jour du nom du chapitre
             $chapitre->nom = $request->input('chapitre_nom');
-            $chapitre->slug = $slugify->slugify('$chapitre->nom');
+            $chapitre->slug = $slugify->slugify($chapitre->nom);
         }
 
         if($request->file('chapitre_video')){
