@@ -15,7 +15,7 @@
         <h4 class="btn text-white pl-0">Gestion du cours</h4>
         <ul class="list-unstyled components mb-5">
             <li>
-                <a href="#">Tarification</a>
+            <a href="{{route('prixcours',$cours->id)}}">Tarification</a>
             </li>
             <li>
             <a href="#">Participants</a>
