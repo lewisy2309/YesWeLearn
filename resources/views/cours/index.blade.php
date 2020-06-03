@@ -12,7 +12,7 @@
                 </div>
             </div>
         </div>
-        @include('incs.courses.category-banner')
+        @include('incs.cours.categorie-banner')
         <div class="row">
             <div class="courses">
                 <div class="course my-5 row">

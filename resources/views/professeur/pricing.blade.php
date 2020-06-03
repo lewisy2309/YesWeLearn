@@ -17,7 +17,8 @@
                     </div>
                     <div class="col-lg-12">
                         <select class="form-control" name="prix">
-                            <option value="2000" {{$cours->prix===2000.00? 'selected' :''}}>2000</option>
+                            <option value="0" {{$cours->prix===0.00? 'selected' :''}}>Gratuit</option>
+                            <option value="2000" {{$cours->prix===2000.00? 'selected' :''}}>2000 FCFA</option>
                             <option value="2500" {{$cours->prix===2500.00? 'selected' :''}}>2500 FCFA</option>
                             <option value="3000" {{$cours->prix===3000.00? 'selected' :''}}>3000 FCFA</option>
                             <option value="3500" {{$cours->prix===3500.00? 'selected' :''}}>3500 FCFA</option>

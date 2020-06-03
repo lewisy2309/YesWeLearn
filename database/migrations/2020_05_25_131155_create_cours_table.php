@@ -21,6 +21,7 @@ class CreateCoursTable extends Migration
             $table->text('objectif');
             $table->text('image');
             $table->float('prix')->nullable();
+            $table->boolean('public')->default(false);
             $table->bigInteger('matiere_id');
             $table->bigInteger('niveau_id');
             $table->bigInteger('user_id');

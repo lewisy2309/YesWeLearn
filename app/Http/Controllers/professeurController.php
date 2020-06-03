@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cours;
 use App\Niveau;
 use App\Matiere;
+use App\Chapitre;
 use Cocur\Slugify\Slugify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -153,5 +154,20 @@ class professeurController extends Controller
         $cours=Cours::find($id);
         $cours->delete();
         return redirect()->route('vueprofilprofesseur')->with('success', 'Le cours a bien été supprimé');
+    }
+
+    public function publish($id){
+        $cours= Cours::find($id);
+        $chapitre=Chapitre::all();
+
+
+
+        if (($cours->prix || $cours->prix===0.00) && count($cours->chapitre)>0) {
+            $cours->public = true ;
+            $cours->save();
+            return redirect()->back()->with('success','Votre cours a bien été mis en ligne');
+        } else{
+            return redirect()->back()->with('danger', 'Pour être publié sur la plateforme academia, votre cours doit avoir au moins un chapitre et un tarif');
+         }
     }
 }

@@ -29,6 +29,10 @@ Route::get('/logout', function(){
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//
+// ROUTES POUR L'AJOUT DES COURS PAR UN PROFESSEUR
+//
+
 Route::get('/professeur/vueprofil', 'professeurController@index')->name('vueprofilprofesseur');
 
 Route::get('/professeur/creationcours', 'professeurController@create')->name('professeurcreationcours');
@@ -41,11 +45,18 @@ Route::put('/professeur/cours/{id}/majcours', 'professeurController@update')->na
 
 Route::get('/professeur/cours/{id}/supprimercours', 'professeurController@destroy')->name('professeursupprimercours');
 
+Route::get('/professeur/cours/{id}/publier', 'professeurController@publish')->name('professeurpubliercours');
+
+//
+// ROUTES POUR LE PRIX DES COURS
+//
 Route::get('/professeur/cours/{id}/cours/prix', 'prixCoursController@pricing')->name('prixcours');
 
 Route::post('/professeur/cours/{id}/prix/sauvegarder', 'prixCoursController@store')->name('prixcourssauvegarder');
 
-
+//
+// ROUTES POUR LA GESTION DU CONTENU DES COURS
+//
 
 Route::get('professeur/cours/{id}/contenucours', 'contenucoursController@index')->name('contenucoursaccueil');
 
@@ -59,7 +70,15 @@ Route::put('professeur/cours/{id}/contenucours/{chapitre}/update', 'contenucours
 
 Route::get('professeur/cours/{id}/contenucours/{chapitre}/delete', 'contenucoursController@destroy')->name('contenucourssupprimerchapitre');
 
+//
+// ROUTES POUR LA GESTION DE L'AFFICHAGE DES COURS
+//
 
+Route::get('/cours', 'coursController@index')->name('affichercours');
+
+//
+// ROUTES POUR LA GESTION DES EXAMEN A METTRE EN LIGNE
+//
 
 Route::get('/professeur/ajouter/examen/enonce', 'ajoutExamenController@index')->name('ajouterenonceexamen');
 
