@@ -75,6 +75,7 @@ Route::get('professeur/cours/{id}/contenucours/{chapitre}/delete', 'contenucours
 //
 
 Route::get('/cours', 'coursController@index')->name('affichercours');
+Route::get('/cours/{slug}', 'coursController@show')->name('affichercoursparticulier');
 
 //
 // ROUTES POUR LA GESTION DES EXAMEN A METTRE EN LIGNE

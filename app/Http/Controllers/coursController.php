@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class coursController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource. (all the courses published)
      *
      * @return \Illuminate\Http\Response
      */
@@ -48,14 +48,26 @@ class coursController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resource(One particular course).
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $cours=Cours::where('slug',$slug)->firstOrFail();
+        $matiere=Matiere::all();
+        $niveau=Niveau::all();
+        $user=User::all();
+        // gestion des recommendation
+        $recommendations=Cours::where('public',true)->where('niveau_id',$cours->niveau_id)->where('id','!=',$cours->id)->limit(3)->get();
+        return view('cours.show',[
+            'cours'=> $cours,
+            'matiere'=> $matiere,
+            'niveau'=> $niveau,
+            'user'=> $user,
+            'recommendations'=>$recommendations
+        ]);
     }
 
     /**

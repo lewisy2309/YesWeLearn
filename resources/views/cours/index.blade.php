@@ -19,7 +19,7 @@
                         <div class="course my-5 row">
                             <div class="col-lg-4">
                                 <div class="about-pic">
-                                    <a href="#">
+                                    <a href="{{route('affichercoursparticulier', $elementcours->slug)}}">
                                     <img src="storage/cours/{{$elementcours->user_id}}/{{$elementcours->image}}" alt="Course img">
                                     </a>
                                 </div>

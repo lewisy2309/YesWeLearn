@@ -171,8 +171,8 @@ ol {
 .price-item .tr-tag,
 .schedule-tab .nav-tabs .nav-item .nav-link.active,
 .site-btn {
-	background-image: -o-linear-gradient(330deg, #ee8425 0%, #f9488b 100%), -o-linear-gradient(330deg, #ee8425 0%, #f9488b 100%);
-	background-image: linear-gradient(120deg, #ee8425 0%, #f9488b 100%), linear-gradient(120deg, #ee8425 0%, #f9488b 100%);
+	background-image: -o-linear-gradient(330deg, #6dac62 0%, #000000 100%), -o-linear-gradient(330deg, #6dac62 0%, #000000 100%);
+	background-image: linear-gradient(120deg, #6dac62 0%, #000000 100%), linear-gradient(120deg, #6dac62 0%, #000000 100%);
 }
 
 /* buttons */
@@ -936,7 +936,7 @@ ol {
 }
 
 .latest-item.large-item .li-text span i {
-	color: #f44949;
+	color: #6dac62;
 }
 
 .latest-item .li-tag {
@@ -975,7 +975,7 @@ ol {
 }
 
 .latest-item .li-text span i {
-	color: #f44949;
+	color: #6dac62;
 }
 
 /*---------------------
@@ -1326,7 +1326,7 @@ ol {
 }
 
 .about-text ul li span {
-	color: #f44949;
+	color: #6dac62;
 }
 
 /*---------------------
@@ -1708,6 +1708,17 @@ ol {
 	left: 20px;
 	top: 20px;
 }
+.blog-item .bi-tag2 {
+	font-size: 12px;
+	font-weight: 600;
+	color: #ffffff;
+	display: inline-block;
+	padding: 3px 20px 5px;
+    border-radius: 2px;
+    position: absolute;
+	left: 30px;
+	top: 70px;
+}
 
 .blog-item.large-item {
 	height: 575px;
@@ -1761,7 +1772,7 @@ ol {
 }
 
 .blog-item .bi-text span i {
-	color: #f44949;
+	color: #6dac62;
 }
 
 .load-more.blog-more {

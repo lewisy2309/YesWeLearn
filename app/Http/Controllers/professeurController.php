@@ -58,7 +58,7 @@ class professeurController extends Controller
         $slugify= new Slugify();
         $cours = new Cours();
         $cours->nom=$request->input('nom');
-        $cours->slug=$slugify->slugify($cours->title);
+        $cours->slug=$slugify->slugify($cours->nom);
         $cours->description=$request->input('description');
         $cours->objectif=$request->input('objectif');
         $cours->matiere_id=$request->input('matieres');
