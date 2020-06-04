@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Cours;
+use App\Niveau;
+use App\Matiere;
 use Illuminate\Http\Request;
 
 class coursController extends Controller
@@ -14,6 +17,9 @@ class coursController extends Controller
      */
     public function index()
     {
+        $matiere=Matiere::all();
+        $niveau=Niveau::all();
+        $user=User::all();
         $cours=Cours::where('public',true)->get();
         return view('cours.index',[
             'cours'=>$cours
