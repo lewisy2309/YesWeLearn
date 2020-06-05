@@ -94,6 +94,10 @@ Route::get('professeur/ajouter/examen/enonce/{id}/edit', 'ajoutExamenController@
 Route::put('professeur/ajouter/examen/enonce/{id}/update', 'ajoutExamenController@update')->name('enonceexamenmaj');
 
 
+//
+// ROUTES POUR LA GESTION DU PANIER
+//
 
-
+Route::get('/panier', 'panierController@index')->name('panierafficher');
+Route::get('/panier/{id}/sauvegarder', 'panierController@store')->name('paniersauvegarderitem');
 

@@ -54,7 +54,7 @@
                                         <div class="pi-price mt-5">
                                             <h2>{{$cours->prix}} fcfa</h2>
                                         </div>
-                                        <a href="#" class="price-btn">Suivre ce cours <i class="fas fa-arrow-right"></i></a>
+                                        <a href="{{route('paniersauvegarderitem',$cours->id)}}" class="price-btn">Suivre ce cours <i class="fas fa-arrow-right"></i></a>
                                     </div>
                             </div>
                         </div>
