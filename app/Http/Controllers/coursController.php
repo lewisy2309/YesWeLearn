@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class coursController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource. (all the courses published)
      *
@@ -60,7 +65,7 @@ class coursController extends Controller
         $niveau=Niveau::all();
         $user=User::all();
         // gestion des recommendation
-        $recommendations=Cours::where('public',true)->where('niveau_id',$cours->niveau_id)->where('id','!=',$cours->id)->limit(3)->get();
+        $recommendations=Cours::where('public',true)->where('niveau_id',$cours->niveau_id)->where('id','!=',$cours->id)->inRandomOrder()->limit(3)->get();
         return view('cours.show',[
             'cours'=> $cours,
             'matiere'=> $matiere,
