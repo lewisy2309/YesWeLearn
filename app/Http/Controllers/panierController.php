@@ -90,6 +90,19 @@ class panierController extends Controller
      */
     public function destroy($id)
     {
-        //
+        \Cart::session(Auth::user()->id)->remove($id);
+        return redirect()->route('panierafficher')->with('success', "Le cours a bien été supprimé du panier");
+    }
+
+     /**
+     * clear all the cart.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function clear()
+    {
+        \Cart::session(Auth::user()->id)->clear();
+        return redirect()->route('panierafficher')->with('success', "Vous venez de vider votre panier mais ne vous inquiétez pas, chacun trouve son compte sur AcademiA");
     }
 }

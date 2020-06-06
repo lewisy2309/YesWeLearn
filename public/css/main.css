@@ -20,6 +20,7 @@ button{
   color: #6dac62;
 }
 
+a:hover{cursor: pointer;}
 /*---------------------
   HEADER
 -----------------------*/
@@ -144,7 +145,7 @@ a {
 
 .member-item .mi-text span {
 	font-size: 16px;
-	color: #f44949;
+	color: #6dac62;
 	display: block;
 }
 
@@ -179,7 +180,7 @@ a {
 }
 
 .nav-menu .mainmenu ul li .dropdown li a:hover {
-	color: #f44949;
+	color: #6dac62;
 }
 
 .nav-menu .mainmenu ul li .dropdown li a:after {

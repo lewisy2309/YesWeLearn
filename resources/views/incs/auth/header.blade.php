@@ -71,24 +71,38 @@
                     <li>
                         <a href="{{route('panierafficher')}}">
                             <i class="fas fa-shopping-cart"></i>
-                            <span class="badge badge-pill badge-danger">1</span>
+                            @if (count(\Cart::session(Auth::user()->id)->getContent())>0)
+                                <span class="badge badge-pill badge-success">{{count(\Cart::session(Auth::user()->id)->getContent())}}</span>
+                            @endif
                         </a>
+                        @if (count(\Cart::session(Auth::user()->id)->getContent())>0)
                         <ul class="dropdown px-2 py-2">
+                            @foreach (\Cart::session(Auth::user()->id)->getContent() as $item)
                             <li>
                                 <div class="d-flex">
-                                    <img class="avatar border-rounded" src="https://blog.hyperiondev.com/wp-content/uploads/2019/02/Blog-Types-of-Web-Dev.jpg"/>
+                                <img class="avatar border-rounded" src="/storage/cours/{{$item->model->user_id}}/{{$item->model->image}}"/>
                                     <div class="user-infos ml-3">
-                                        <small>Titre du cours</small>
-                                        <p class="text-danger">29,99 €</p>
+                                        <small>{{$item->model->nom}}</small>
+                                        <p class="text-success">{{$item->model->prix}} fcfa</p>
                                     </div>
                                 </div>
                             </li>
+                            @endforeach
                         </ul>
+                        @else
+                            <ul class="dropdown px-2 py-2">
+                                <li>
+                                    <div class="">
+                                    Votre panier est vide. Continuez vos achat <a class="btn btn-success" href="{{route('affichercours')}}"> ici </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        @endif
                     </li>
                     <li>
                         <a href="#">
                             <i class="fas fa-heart"></i>
-                            <span class="badge badge-pill badge-danger">1</span>
+                            <span class="badge badge-pill badge-success">1</span>
                         </a>
                         <ul class="dropdown px-2 py-2">
                             <li>
