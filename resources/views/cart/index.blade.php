@@ -35,8 +35,7 @@
                                     <td><p><b>{{$cours->model->nom}}</b></p><p>Par {{$cours->model->user->name}}</p></td>
                                     <td class="text-left">
                                         <small><a class="btn border" href="{{route('paniersupprimeritem',$cours->model->id)}}">Supprimer</a></small><br>
-                                        <small><a class="btn border" href="#">Enregistrer pour plus tard</a></small><br>
-                                        <small><a class="btn border" href="#">Ajouter à la liste de souhaits</a></small>
+                                        <small><a class="btn border" href="#">Ajouter aux coups de coeur</a></small>
                                     </td>
                                     <td class="text-right">{{$cours->model->prix}} FCFA</td>
                                 </tr>
@@ -96,6 +95,11 @@
 
         <h3 class="my-3">Votre liste de coup de coeur</h3>
         <div class="table-responsive">
+            <div class="d-flex justify-content-end mb-3">
+                <a href="{{route('coupdecoeurvider')}}" class="btn btn-block btn-danger w-50">
+                    vider votre liste de coup de coeur
+                </a>
+            </div>
             <table class="table table-striped">
                 @foreach (\Cart::session(Auth::user()->id.'_coupDeCoeur')->getContent() as $coupDeCoeur)
                     <tbody>

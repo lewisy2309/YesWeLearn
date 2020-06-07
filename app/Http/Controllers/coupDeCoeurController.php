@@ -95,4 +95,19 @@ class coupDeCoeurController extends Controller
         \Cart::session(Auth::user()->id.'_coupDeCoeur')->remove($id);
         return redirect()->route('panierafficher')->with('success','élément supprimé de la liste de souhait');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function clear()
+    {
+
+
+        \Cart::session(Auth::user()->id.'_coupDeCoeur')->clear();
+        return redirect()->route('panierafficher')->with('success', "Vous venez de vider votre liste de coup de coeur mais ne vous inquiétez pas, chacun trouve son compte sur AcademiA");
+    }
 }
+
