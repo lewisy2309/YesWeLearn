@@ -92,7 +92,7 @@ class coupDeCoeurController extends Controller
     public function destroy($id)
     {
 
-        \Cart::session(Auth::user()->id)->remove($id);
-        return redirect()->route('/panier')->with('success','élément supprimé de la liste de souhait');
+        \Cart::session(Auth::user()->id.'_coupDeCoeur')->remove($id);
+        return redirect()->route('panierafficher')->with('success','élément supprimé de la liste de souhait');
     }
 }
