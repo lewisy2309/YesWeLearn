@@ -112,5 +112,7 @@ Route::get('/panier/vuder', 'panierController@clear')->name('paniervider');
 Route::get('/panier/coupdecoeur/{id}/sauvegarder', 'coupDeCoeurController@store')->name('coupdecoeursauvegarderitem');
 
 Route::get('/panier/coupdecoeur/{id}/supprimer', 'coupDeCoeurController@destroy')->name('coupdecoeursupprimeritem');
+
 Route::get('/panier/coupdecoeur/clear', 'coupDeCoeurController@clear')->name('coupdecoeurvider');
 
+Route::get('/panier/coupdecoeur/{id}/ajouterAuPanier', 'coupDeCoeurController@addToCart')->name('coupdecoeurajouteraupanier');

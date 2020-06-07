@@ -97,10 +97,9 @@ class coupDeCoeurController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * clear the wish list.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
      */
     public function clear()
     {
@@ -108,6 +107,27 @@ class coupDeCoeurController extends Controller
 
         \Cart::session(Auth::user()->id.'_coupDeCoeur')->clear();
         return redirect()->route('panierafficher')->with('success', "Vous venez de vider votre liste de coup de coeur mais ne vous inquiétez pas, chacun trouve son compte sur AcademiA");
+    }
+
+    /**
+     * delete an item from the wish list and add it to cart.
+     *
+     *
+     */
+    public function addToCart($id)
+    {
+
+
+        \Cart::session(Auth::user()->id.'_coupDeCoeur')->remove($id);
+        $cours= Cours::find($id);
+        $ajouter= \Cart::session(Auth::user()->id)->add(array(
+          'id'=>$cours->id,
+          'name'=>$cours->nom,
+          'price'=>$cours->prix,
+          'quantity'=>1,
+          'associatedModel'=>$cours
+        ));
+        return redirect()->route('panierafficher')->with('success','Cours supprimé de la liste de souhaits et ajouté dans le panier');
     }
 }
 

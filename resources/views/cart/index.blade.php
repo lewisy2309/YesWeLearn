@@ -108,13 +108,22 @@
                             <td><p><b>{{$coupDeCoeur->model->nom}}</b></p><p>Par {{$coupDeCoeur->model->user->name}}</p></td>
                             <td class="text-left">
                                 <small><a class="btn border" href="{{route('coupdecoeursupprimeritem', $coupDeCoeur->model->id)}}">Supprimer</a></small><br>
-                                <small><a class="btn border" href="#">Ajouter au panier</a></small>
+                                <small><a class="btn border" href="{{route('coupdecoeurajouteraupanier', $coupDeCoeur->model->id)}}">Ajouter au panier</a></small>
                             </td>
                             <td class="text-right">{{$coupDeCoeur->price}} FCFA</td>
                         </tr>
                     </tbody>
                 @endforeach
             </table>
+        </div>
+    @else
+        <div class="emptycart text-center">
+            <i class="fas fa-heart fa-3x"></i>
+            <h4 class="my-5"> Vous n'avez pas encore eut de coup de couer sur la plateforme AcademiA, Continuez vos achats et regarder les cours qui vous plaisent</h4>
+            <a href="{{route('affichercours')}}" class="primary-btn">
+                Les Cours
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
         </div>
     @endif
     </div>
