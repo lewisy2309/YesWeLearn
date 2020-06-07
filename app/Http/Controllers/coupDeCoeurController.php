@@ -7,13 +7,8 @@ use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class panierController extends Controller
+class coupDeCoeurController extends Controller
 {
-
-    public function __construct()
-    {
-        return $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +16,7 @@ class panierController extends Controller
      */
     public function index()
     {
-        return view('cart.index');
+        //
     }
 
     /**
@@ -40,16 +35,17 @@ class panierController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id)
+    public function store(Request $request, $id)
     {
         $cours= Cours::find($id);
-        $ajouter= \Cart::session(Auth::user()->id)->add(array(
-          'id'=>$cours->id,
-          'name'=>$cours->nom,
-          'price'=>$cours->prix,
-          'quantity'=>1,
-          'associatedModel'=>$cours
+        $ajouterCoupDeCoeur=\Cart::session(Auth::user()->id.'_coupDeCoeur')->add(array(
+            'id' => $cours->id,
+            'name' => $cours->nom,
+            'price' => $cours->prix,
+            'quantity' => 1,
+            'associatedModel' => $cours
         ));
+
         return redirect()->route('panierafficher');
     }
 
@@ -61,7 +57,7 @@ class panierController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**
@@ -95,19 +91,8 @@ class panierController extends Controller
      */
     public function destroy($id)
     {
-        \Cart::session(Auth::user()->id)->remove($id);
-        return redirect()->route('panierafficher')->with('success', "Le cours a bien été supprimé du panier");
-    }
 
-     /**
-     * clear all the cart.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function clear()
-    {
-        \Cart::session(Auth::user()->id)->clear();
-        return redirect()->route('panierafficher')->with('success', "Vous venez de vider votre panier mais ne vous inquiétez pas, chacun trouve son compte sur AcademiA");
+        \Cart::session(Auth::user()->id)->remove($id);
+        return redirect()->route('/panier')->with('success','élément supprimé de la liste de souhait');
     }
 }

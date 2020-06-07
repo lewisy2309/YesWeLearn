@@ -98,6 +98,7 @@ Route::put('professeur/ajouter/examen/enonce/{id}/update', 'ajoutExamenControlle
 // ROUTES POUR LA GESTION DU PANIER
 //
 
+// Panier
 Route::get('/panier', 'panierController@index')->name('panierafficher');
 
 Route::get('/panier/{id}/sauvegarder', 'panierController@store')->name('paniersauvegarderitem');
@@ -105,4 +106,10 @@ Route::get('/panier/{id}/sauvegarder', 'panierController@store')->name('paniersa
 Route::get('/panier/{id}/supprimer', 'panierController@destroy')->name('paniersupprimeritem');
 
 Route::get('/panier/vuder', 'panierController@clear')->name('paniervider');
+
+// COUPS DE COEUR
+
+Route::get('/panier/coupdecoeur/{id}/sauvegarder', 'coupDeCoeurController@store')->name('coupdecoeursauvegarderitem');
+
+Route::get('/panier/coupdecoeur/{id}/supprimer', 'coupDeCoeurController@destroy')->name('coupdecoeursupprimeritem');
 

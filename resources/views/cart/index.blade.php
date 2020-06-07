@@ -88,41 +88,31 @@
             </div>
         @endif
     </div>
-    <div class="save-for-later jumbotron my-5">
-        <h3>Enregistré pour plus tard</h3>
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <tbody>
-                    <tr>
-                        <td><img class="cart-img" src="https://blog.hyperiondev.com/wp-content/uploads/2019/02/Blog-Types-of-Web-Dev.jpg" /> </td>
-                        <td><p><b>Titre du cours</b></p><p>Par Nom du formateur</p></td>
-                        <td class="text-left">
-                            <small><a class="btn border" href="#">Supprimer</a></small><br>
-                            <small><a class="btn border" href="#">Ajouter au panier</a></small>
-                        </td>
-                        <td class="text-right">19,99 €</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
     <div class="wish-list jumbotron pt-3">
-        <h3 class="my-3">Récemment ajouté à la liste de souhaits</h3>
+
+    @if (count(\Cart::session(Auth::user()->id.'_coupDeCoeur')->getContent())>0)
+
+
+
+        <h3 class="my-3">Votre liste de coup de coeur</h3>
         <div class="table-responsive">
             <table class="table table-striped">
-                <tbody>
-                    <tr>
-                        <td><img class="cart-img" src="https://blog.hyperiondev.com/wp-content/uploads/2019/02/Blog-Types-of-Web-Dev.jpg" /> </td>
-                        <td><p><b>Titre du cours</b></p><p>Par Nom du formateur</p></td>
-                        <td class="text-left">
-                            <small><a class="btn border" href="#">Supprimer</a></small><br>
-                            <small><a class="btn border" href="#">Ajouter au panier</a></small>
-                        </td>
-                        <td class="text-right">29,99 €</td>
-                    </tr>
-                </tbody>
+                @foreach (\Cart::session(Auth::user()->id.'_coupDeCoeur')->getContent() as $coupDeCoeur)
+                    <tbody>
+                        <tr>
+                        <td><img class="cart-img" src="/storage/cours/{{$coupDeCoeur->model->user_id}}/{{$coupDeCoeur->model->image}}" /> </td>
+                            <td><p><b>{{$coupDeCoeur->model->nom}}</b></p><p>Par {{$coupDeCoeur->model->user->name}}</p></td>
+                            <td class="text-left">
+                                <small><a class="btn border" href="{{route('coupdecoeursupprimeritem', $coupDeCoeur->model->id)}}">Supprimer</a></small><br>
+                                <small><a class="btn border" href="#">Ajouter au panier</a></small>
+                            </td>
+                            <td class="text-right">{{$coupDeCoeur->price}} FCFA</td>
+                        </tr>
+                    </tbody>
+                @endforeach
             </table>
         </div>
+    @endif
     </div>
 </div>
 

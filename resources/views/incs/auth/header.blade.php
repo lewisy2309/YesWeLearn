@@ -102,18 +102,34 @@
                     <li>
                         <a href="#">
                             <i class="fas fa-heart"></i>
-                            <span class="badge badge-pill badge-success">1</span>
+                            @if (count(\Cart::session(Auth::user()->id.'_coupDeCoeur')->getContent())>0)
+                                <span class="badge badge-pill badge-success">{{count(\Cart::session(Auth::user()->id.'_coupDeCoeur')->getContent())}}</span>
+                            @endif
                         </a>
                         <ul class="dropdown px-2 py-2">
+                            @if (count(\Cart::session(Auth::user()->id.'_coupDeCoeur')->getContent())>0)
+                            @foreach (\Cart::session(Auth::user()->id.'_coupDeCoeur')->getContent() as $coupDeCoeur)
+
                             <li>
                                 <div class="d-flex">
-                                    <img class="avatar border-rounded" src="https://blog.hyperiondev.com/wp-content/uploads/2019/02/Blog-Types-of-Web-Dev.jpg"/>
+                                <img class="avatar border-rounded" src="/storage/cours/{{$coupDeCoeur->model->user_id}}/{{$coupDeCoeur->model->image}}"/>
                                     <div class="user-infos ml-3">
-                                        <small>Titre du cours</small>
-                                        <p class="text-danger">19,99 €</p>
+                                        <small>{{$coupDeCoeur->model->nom}}</small>
+                                        <p class="text-danger">{{$coupDeCoeur->price}} FCFA</p>
                                     </div>
                                 </div>
                             </li>
+
+                            @endforeach
+                            @else
+                            <ul class="dropdown px-2 py-2">
+                                <li>
+                                    <div class="">
+                                    Vous n'avez pas encore eut de coup de coeur sur la plateforme academia. Continuez l'exploration de notre site <a class="btn btn-success" href="{{route('affichercours')}}"> ici </a>
+                                    </div>
+                                </li>
+                            </ul>
+                            @endif
                         </ul>
                     </li>
                     <li>

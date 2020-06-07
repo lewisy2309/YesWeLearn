@@ -33,7 +33,8 @@
                                 </div>
                             </div>
                             <div class="col-lg-2">
-                                <b>{{$elementcours->prix===0.00? 'Gratuit': $elementcours->prix.' FCFA'}} </b>
+                                <p><b>{{$elementcours->prix===0.00? 'Gratuit': $elementcours->prix.' FCFA'}} </b></p>
+                                <a href="{{route('coupdecoeursauvegarderitem',$elementcours->id)}}"><i class="fas fa-heart fa-2x"></i></a>
                             </div>
                         </div>
                     </div>
