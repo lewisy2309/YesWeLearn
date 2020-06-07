@@ -35,7 +35,7 @@
                                     <td><p><b>{{$cours->model->nom}}</b></p><p>Par {{$cours->model->user->name}}</p></td>
                                     <td class="text-left">
                                         <small><a class="btn border" href="{{route('paniersupprimeritem',$cours->model->id)}}">Supprimer</a></small><br>
-                                        <small><a class="btn border" href="#">Ajouter aux coups de coeur</a></small>
+                                        <small><a class="btn border" href="{{route('panierajoutercoupdecoeur',$cours->model->id)}}">Ajouter aux coups de coeur</a></small>
                                     </td>
                                     <td class="text-right">{{$cours->model->prix}} FCFA</td>
                                 </tr>

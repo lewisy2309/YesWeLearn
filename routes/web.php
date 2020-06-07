@@ -107,6 +107,8 @@ Route::get('/panier/{id}/supprimer', 'panierController@destroy')->name('paniersu
 
 Route::get('/panier/vuder', 'panierController@clear')->name('paniervider');
 
+Route::get('/panier/{id}/ajouterCoupDeCoeur', 'panierController@addToWishList')->name('panierajoutercoupdecoeur');
+
 // COUPS DE COEUR
 
 Route::get('/panier/coupdecoeur/{id}/sauvegarder', 'coupDeCoeurController@store')->name('coupdecoeursauvegarderitem');

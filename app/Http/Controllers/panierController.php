@@ -110,4 +110,25 @@ class panierController extends Controller
         \Cart::session(Auth::user()->id)->clear();
         return redirect()->route('panierafficher')->with('success', "Vous venez de vider votre panier mais ne vous inquiétez pas, chacun trouve son compte sur AcademiA");
     }
+
+     /**
+     * delete an item from the cart and add it to the wish list.
+     *
+     *
+     */
+    public function addToWishList($id)
+    {
+
+
+        \Cart::session(Auth::user()->id)->remove($id);
+        $cours= Cours::find($id);
+        $ajouter= \Cart::session(Auth::user()->id."_coupDeCoeur")->add(array(
+          'id'=>$cours->id,
+          'name'=>$cours->nom,
+          'price'=>$cours->prix,
+          'quantity'=>1,
+          'associatedModel'=>$cours
+        ));
+        return redirect()->route('panierafficher')->with('success','Cours supprimé du panier et ajouté dans les coups de coeur');
+    }
 }
