@@ -118,3 +118,9 @@ Route::get('/panier/coupdecoeur/{id}/supprimer', 'coupDeCoeurController@destroy'
 Route::get('/panier/coupdecoeur/clear', 'coupDeCoeurController@clear')->name('coupdecoeurvider');
 
 Route::get('/panier/coupdecoeur/{id}/ajouterAuPanier', 'coupDeCoeurController@addToCart')->name('coupdecoeurajouteraupanier');
+
+// PAYEMENT
+
+Route::get('/paiement', 'checkoutController@index')->name('payment');
+Route::get('/paiement/success', 'checkoutController@success')->name('paymentsuccess');
+Route::post('/paiement/charge', 'checkoutController@charge')->name('paymentcharger');

@@ -122,13 +122,13 @@
 
                             @endforeach
                             @else
-                            <ul class="dropdown px-2 py-2">
+
                                 <li>
                                     <div class="">
-                                    Vous n'avez pas encore eut de coup de coeur sur la plateforme academia. Continuez l'exploration de notre site <a class="btn btn-success" href="{{route('affichercours')}}"> ici </a>
+                                    Vous n'avez pas encore eut de coup de coeur sur la plateforme Yes We Learn GABON. Continuez l'exploration de notre site <a class="btn btn-success" href="{{route('affichercours')}}"> ici </a>
                                     </div>
                                 </li>
-                            </ul>
+
                             @endif
                         </ul>
                     </li>

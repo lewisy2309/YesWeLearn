@@ -7,19 +7,19 @@
         <div class="row">
             <div class="col-lg-7">
                 <div class="hero-text">
-                    <h2>Apprenez d'où vous voulez avec <span class="academia">ACADEMIA</span></h2>
+                    <h2>Apprenez d'où vous voulez avec <span class="academia">Yes We Learn GABON</span></h2>
                     <ul class="list-group">
                         <li class="list-group-item">Tous les programmes de la 6e en Tle</li>
                         <li class="list-group-item">Toutes les épreuves du BEPC et du baccalauréat depuis 2000</li>
                         <li class="list-group-item">Cours hors ligne</li>
                         <li class="list-group-item">Cours en podcast</li>
                         <li class="list-group-item">Cours préparés et rédigés par les meilleurs</li>
-                        <li class="list-group-item">Cours à domicile</li>
+                        <li class="list-group-item">Cours à domicile avec nos partenaires</li>
                         <li class="list-group-item">Cours par petits groupes</li>
                         <li class="list-group-item">Prépa examens gabonais</li>
                         <li class="list-group-item">Prépa examens français</li>
                     </ul>
-                    <a href="#" class="btn primary-btn my-5 btn-success">Nous rejoindre</a>
+                    <a href="#" class="btn primary-btn my-5 btn-success">Rejoindre la plateforme</a>
                 </div>
             </div>
             <div class="col-lg-5">
@@ -40,8 +40,8 @@
             </div>
             <div class="col-lg-6">
                 <div class="ha-text">
-                    <h2>À propos de <span class="academia">ACADEMIA</span></h2>
-                    <p> Situé dans les locaux du Complexe scolaire MICHEL DIRAT, Academia est le premier réseau d'accompagnement et de soutient scolaire gabonais qui aide les élèves à obtenir leur diplome de par un encadrement sérieux et individualisé, le tout dans une atmosphère conviviale et propice à l'éducation</p>
+                    <h2>À propos de <span class="academia">Yes we learn GABON</span></h2>
+                    <p> Yes We Learn GABON est un site internet de formation en ligne à destination des étudiants gabonais créé dans l'optique d'améliorer l'apprentissage lors de la crise sanitaire</p>
                     <ul>
                         <li><i class="fas fa-check"></i> Plus de 30 formateurs organisés performants, compétents et à l'écoute</li>
                         <li><i class="fas fa-check"></i> Salles et environnements de travail spacieux et climatisés </li>
@@ -145,7 +145,7 @@
     <!--Section heading-->
     <h2 class="h1-responsive font-weight-bold text-center my-4">Contactez nous</h2>
     <!--Section description-->
-    <p class="text-center w-responsive mx-auto mb-5" >Vous avez des question? S'il vout plait n'hésitez pas à nous contacter directement. L'équipe <span>ACADEMIA</span> vous recontactera avec grand plaisr et dans les plus brefs délais peu importe votre question.</p>
+    <p class="text-center w-responsive mx-auto mb-5" >Vous avez des question? S'il vout plait n'hésitez pas à nous contacter directement. L'équipe <span>Yes We Learn GABON</span> vous recontactera avec grand plaisr et dans les plus brefs délais peu importe votre question.</p>
 
     <div class="row">
 
@@ -218,7 +218,7 @@
             <ul class="list-unstyled mb-0">
                 <li>
                     <i class="fas fa-search-location"></i>
-                    <p>Quartier Montagne Sainte, BP 20459, libreville ,GABON</p>
+                    <p>libreville ,GABON</p>
                 </li>
 
                 <li>
@@ -228,7 +228,7 @@
 
                 <li>
                     <i class="fas fa-envelope-open-text"></i>
-                    <p>academiagabon@gmail.com</p>
+                    <p>contact@yeswelearngabon.com</p>
                 </li>
             </ul>
         </div>
