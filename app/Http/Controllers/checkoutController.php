@@ -3,13 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Payment;
 use Stripe\Stripe;
 use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\http\managers\paymentManager;
 
 class checkoutController extends Controller
 {
+
+    // surcharge du constructeur
+    public function __construct(paymentManager $paymentManager)
+    {   $this->middleware('auth');
+        $this->paymentManager=$paymentManager  ;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -17,6 +27,7 @@ class checkoutController extends Controller
      */
     public function index()
     {
+        $user=User::all();
         $totalCommande=\Cart::getTotal();
         $tax=\Cart::getTotal()*(18/100);
         $taxArrondie=round($tax,0);
@@ -27,7 +38,8 @@ class checkoutController extends Controller
             'taxArrondie'=>$taxArrondie,
             'totalTaxe'=>$totalTaxe,
             'totalCommande'=>$totalCommande,
-            'commande'=>$commande
+            'commande'=>$commande,
+            'user'=>$user
         ]);
     }
 
@@ -48,6 +60,19 @@ class checkoutController extends Controller
                 'source'=>$request->input('stripeToken'),
                 'receipt_email'=>Auth::user()->email
             ]);
+
+            foreach(\Cart::getContent() as $cours){
+                $part_professeur=$this->paymentManager->getPartProfesseur(round((\Cart::session(Auth::user()->id)->getTotal()+$taxarrondie)/655));
+                $part_YesWeLearn=$this->paymentManager->getPartYesWeLearn(round((\Cart::session(Auth::user()->id)->getTotal()+$taxarrondie)/655));
+                Payment::create([
+                    'cours_id'=>$cours->model->id,
+                    'montant'=>round((\Cart::session(Auth::user()->id)->getTotal()+$taxarrondie)/655),
+                    'part_professeur'=>$part_professeur,
+                    'part_YesWeLearn'=>$part_YesWeLearn,
+                    'email'=>Auth::user()->email,
+                ]);
+            }
+
             return redirect()->route('paymentsuccess')->with('success', 'Paiement accepté');
 
         }catch(\Stripe\Exception\CardErrorException $error){

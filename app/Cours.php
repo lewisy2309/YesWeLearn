@@ -22,4 +22,8 @@ class Cours extends Model
       return $this->hasMany('app\Chapitre');
     }
 
+    public function payment(){
+        return $this->hasMany('app\Payment');
+    }
+
 }
