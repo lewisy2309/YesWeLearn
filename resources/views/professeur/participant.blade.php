@@ -1,4 +1,4 @@
-@extends('layouts.instructor-app')
+@extends('layouts.professeur-app')
 
 @section('content')
 
@@ -18,13 +18,15 @@
                       </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                          <th>20/03/2020</th>
-                          <td>utilisateur@email.com</td>
-                          <td>Titre du cours</td>
-                          <td>19,99 €</td>
-                          <td>13,99 €</td>
-                        </tr>
+                        @foreach ($payments as $payment)
+                            <tr>
+                            <th>{{$payment->created_at}}</th>
+                            <td>{{$payment->email}}</td>
+                            <td>{{$payment->cours->nom}}</td>
+                            <td>{{($payment->montant-(($payment->montant)*18/100))*655}} FCFA</td>
+                            <td>{{(($payment->part_professeur-(($payment->part_professeur)*18/100))*655)}} FCFA</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                   </table>
             </div>

@@ -47,6 +47,8 @@ Route::get('/professeur/cours/{id}/supprimercours', 'professeurController@destro
 
 Route::get('/professeur/cours/{id}/publier', 'professeurController@publish')->name('professeurpubliercours');
 
+Route::get('/professeur/cours/{id}/participants', 'professeurController@displayParticipant')->name('coursparticipants');
+
 //
 // ROUTES POUR LE PRIX DES COURS
 //

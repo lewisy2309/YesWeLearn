@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cours;
 use App\Niveau;
 use App\Matiere;
+use App\Payment;
 use App\Chapitre;
 use Cocur\Slugify\Slugify;
 use Illuminate\Http\Request;
@@ -170,4 +171,14 @@ class professeurController extends Controller
             return redirect()->back()->with('danger', 'Pour être publié sur la plateforme academia, votre cours doit avoir au moins un chapitre et un tarif');
          }
     }
+
+    public function displayParticipant($id){
+        $cours=Cours::find($id);
+        $payment=Payment::where('cours_id', $cours->id)->get();
+        return view('professeur.participant',[
+            'cours'=>$cours,
+            'payments'=>$payment
+        ]);
+    }
+
 }

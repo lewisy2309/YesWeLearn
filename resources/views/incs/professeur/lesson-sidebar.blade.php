@@ -8,7 +8,7 @@
                 <a href="{{route('contenucoursaccueil',$cours->id)}}">Programme</a>
             </li>
             <li>
-                <a href="#">Page d'accueil du cours</a>
+                <a href="{{route('professeurmodifiercours',$cours->id)}}">Page d'accueil du cours</a>
             </li>
         </ul>
 
@@ -18,7 +18,7 @@
             <a href="{{route('prixcours',$cours->id)}}">Tarification</a>
             </li>
             <li>
-            <a href="#">Participants</a>
+            <a href="{{route('coursparticipants',$cours->id)}}">Participants</a>
             </li>
 
             <li>
