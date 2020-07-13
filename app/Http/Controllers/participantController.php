@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Cours;
-use App\Niveau;
 use App\Matiere;
+use App\Niveau;
 use App\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class coursController extends Controller
+class participantController extends Controller
 {
 
     public function __construct()
@@ -18,18 +18,23 @@ class coursController extends Controller
         $this->middleware('auth');
     }
     /**
-     * Display a listing of the resource. (all the courses published)
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
+        $user=User::all();
         $matiere=Matiere::all();
         $niveau=Niveau::all();
-        $user=User::all();
-        $cours=Cours::where('public',true)->get();
-        return view('cours.index',[
-            'cours'=>$cours
+        $cours=Cours::all();
+        $payment=Payment::where('email', Auth::user()->email)->get();
+        return view('participant.courses',[
+            'cours'=>$cours,
+            'payments'=>$payment,
+            'user'=>$user,
+            'matiere'=>$matiere,
+            'niveau'=>$niveau
         ]);
     }
 
@@ -55,33 +60,14 @@ class coursController extends Controller
     }
 
     /**
-     * Display the specified resource(One particular course).
+     * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
-
-        $cours=Cours::where('slug',$slug)->firstOrFail();
-        $matiere=Matiere::all();
-        $niveau=Niveau::all();
-        $user=User::all();
-        $payment=Payment::all();
-        // gestion des recommendations
-
-        if($payment->where('email',Auth::user()->email)->where('cours_id',$cours->id)->count()!=0 ){
-                die('cours vous appartenant ou cours déja acheté');
-        }
-
-        $recommendations=Cours::where('public',true)->where('niveau_id',$cours->niveau_id)->where('id','!=',$cours->id)->inRandomOrder()->limit(3)->get();
-        return view('cours.show',[
-            'cours'=> $cours,
-            'matiere'=> $matiere,
-            'niveau'=> $niveau,
-            'user'=> $user,
-            'recommendations'=>$recommendations
-        ]);
+        //
     }
 
     /**

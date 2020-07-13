@@ -7,6 +7,9 @@
         <h2 class="text-center">Mes cours</h2>
         <div class="jumbotron row">
             <div class="courses">
+                @foreach ($payments as $achat)
+
+
                     <div class="course my-5 row">
                         <div class="col-lg-3">
                             <div class="about-pic">
@@ -17,10 +20,11 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="about-text pt-0">
-                                <h3>Titre du cours</h3>
-                                <p>Sous-titre du cours</p>
-                                <p>Par <b>Nom du formateur</b></p>
-                                <span class="tag">Catégorie</span>
+                                <h3>{{$achat->cours->nom}}</h3>
+                                <p>{{$achat->cours->description}}</p>
+                                <p>Par <b>{{$achat->cours->user->nom}}</b></p>
+                                <span class="tag">{{$achat->cours->matiere->nom}}</span>
+                                <p>Niveau: <span class="tag">{{$achat->cours->niveau->nom}}</span><p>
                             </div>
                         </div>
                         <div class="col-lg-3">
@@ -31,7 +35,9 @@
                         </div>
                     </div>
                     <hr>
+                @endforeach
             </div>
+
         </div>
     </div>
 </section>

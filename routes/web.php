@@ -126,3 +126,8 @@ Route::get('/panier/coupdecoeur/{id}/ajouterAuPanier', 'coupDeCoeurController@ad
 Route::get('/paiement', 'checkoutController@index')->name('payment');
 Route::get('/paiement/success', 'checkoutController@success')->name('paymentsuccess');
 Route::post('/paiement/charge', 'checkoutController@charge')->name('paymentcharger');
+
+// VUE DES PARTICIPANTS A UN COURS
+
+Route::get('/mes_cours','participantController@index')->name('mescours');
+
