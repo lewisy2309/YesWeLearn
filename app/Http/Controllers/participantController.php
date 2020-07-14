@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Cours;
-use App\Matiere;
 use App\Niveau;
+use App\Matiere;
 use App\Payment;
+use App\Chapitre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -68,9 +69,13 @@ class participantController extends Controller
     public function show($id)
     {
         $cours=Cours::find($id);
+        $chapitre=Chapitre::where('cours_id',$id)->get();
+
+
 
         return view('participant.course',[
-            'cours'=>$cours
+            'cours'=>$cours,
+            'chapitre'=>$chapitre,
         ]);
     }
 
