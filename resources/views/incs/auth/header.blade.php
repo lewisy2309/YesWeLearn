@@ -1,3 +1,15 @@
+@php
+
+use App\Cours;
+use App\Payment;
+
+
+    $cours=Cours::all();
+    $coursUser= Payment::where('email',Auth::user()->email)->limit(4)->get();
+
+
+@endphp
+
 <div class="">
     <div class="container-fluid">
         <div class="nav-menu">
@@ -58,14 +70,18 @@
                             Mes cours
                         </a>
                         <ul class="dropdown">
-                            <li>
-                                <div class="d-flex  ml-2 my-3">
-                                    <img class="avatar border-rounded" src="https://blog.hyperiondev.com/wp-content/uploads/2019/02/Blog-Types-of-Web-Dev.jpg"/>
-                                    <div class="user-infos">
-                                        <a href="#"><small>Titre du cours</small></a>
-                                    </div>
-                                </div>
-                            </li>
+                            @if (count($coursUser)>0)
+                                @foreach ($coursUser as $mescours)
+                                    <li>
+                                        <div class="d-flex  ml-2 my-3">
+                                            <img class="avatar border-rounded" src="/storage/cours/{{$mescours->cours->user_id}}/{{$mescours->cours->image}}"/>
+                                            <div class="user-infos">
+                                                <a href="#"><small>{{$mescours->cours->nom}}</small></a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            @endif
                         </ul>
                     </li>
                     <li>

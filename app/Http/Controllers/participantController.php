@@ -67,7 +67,11 @@ class participantController extends Controller
      */
     public function show($id)
     {
-        //
+        $cours=Cours::find($id);
+
+        return view('participant.course',[
+            'cours'=>$cours
+        ]);
     }
 
     /**

@@ -121,7 +121,7 @@ Route::get('/panier/coupdecoeur/clear', 'coupDeCoeurController@clear')->name('co
 
 Route::get('/panier/coupdecoeur/{id}/ajouterAuPanier', 'coupDeCoeurController@addToCart')->name('coupdecoeurajouteraupanier');
 
-// PAYEMENT
+// PAIEMENT
 
 Route::get('/paiement', 'checkoutController@index')->name('payment');
 Route::get('/paiement/success', 'checkoutController@success')->name('paymentsuccess');
@@ -130,4 +130,5 @@ Route::post('/paiement/charge', 'checkoutController@charge')->name('paymentcharg
 // VUE DES PARTICIPANTS A UN COURS
 
 Route::get('/mes_cours','participantController@index')->name('mescours');
+Route::get('/mes_cours/{id}/{slug}','participantController@show')->name('moncours');
 

@@ -28,7 +28,9 @@
                             </div>
                         </div>
                         <div class="col-lg-3">
-                            <a href="#" class="primary-btn">
+                            <a href="{{route('moncours',
+                            ['id'=>$achat->cours->id,
+                            'slug'=>$achat->cours->slug])}}" class="primary-btn">
                                 Continuer
                                 <i class="fas fa-arrow-right"></i>
                             </a>
