@@ -24,7 +24,10 @@
                     $i++;
                 @endphp
                 <li class="list-group-item bg-light">
-                    <a href="#" class="btn">
+                    <a href="{{route('moncourschapitre',[
+                        'id'=>$cours->id,
+                        'chapitre'=>$chapitre->slug
+                    ])}}" class="btn">
                         <i class="fas fa-book"></i>
                         Chapitre {{$i}} : {{$chapitre->nom}}
                     </a>

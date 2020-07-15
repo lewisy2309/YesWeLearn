@@ -80,16 +80,31 @@ class participantController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show different video function of the choice.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function displayChapitre($id,$chapitre)
     {
-        //
+        $cours=Cours::find($id);
+        $chapitre=Chapitre::where('slug',$chapitre)->firstOrFail();
+        return view('participant.section', [
+            'cours'=>$cours,
+            'chapitre'=>$chapitre
+        ]);
     }
 
+
+
+    public function displayPersonalProfile(){
+        $user=Auth::user();
+        $niveau=Niveau::all();
+        return view('home',[
+            'cours'=>$user,
+            'niveau'=>$niveau
+        ]);
+    }
     /**
      * Update the specified resource in storage.
      *

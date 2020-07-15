@@ -10806,3 +10806,7 @@ ol {
 	max-width: 80px;
 	max-height: 80px;
 }
+
+.profile-picture{
+    width: 200px;
+}

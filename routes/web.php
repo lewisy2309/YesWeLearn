@@ -131,4 +131,9 @@ Route::post('/paiement/charge', 'checkoutController@charge')->name('paymentcharg
 
 Route::get('/mes_cours','participantController@index')->name('mescours');
 Route::get('/mes_cours/{id}/{slug}','participantController@show')->name('moncours');
+Route::get('/mes_cours/{id}/chapitre/{chapitre}','participantController@displayChapitre')->name('moncourschapitre');
+
+// Vue du profil de l'utilisateur
+
+Route::get('/mon profil','participantController@displayPersonalProfile')->name('monprofil');
 
