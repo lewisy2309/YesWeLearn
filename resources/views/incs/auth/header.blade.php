@@ -1,11 +1,13 @@
 @php
 
 use App\Cours;
+use App\Photo;
 use App\Payment;
 
 
     $cours=Cours::all();
     $coursUser= Payment::where('email',Auth::user()->email)->limit(4)->get();
+    $photo=Photo::all();
 
 
 @endphp
@@ -150,7 +152,7 @@ use App\Payment;
                     </li>
                     <li>
                     <a class="nav-link" href="{{route('monprofil')}}">
-                            <img class="avatar-profile border-rounded rounded-circle" src="https://uploads-ssl.webflow.com/5bddf05642686caf6d17eb58/5dc2fd00c29f7abeadd7c332_gPZwCbdS.jpg"/>
+                            <img class="avatar-profile border-rounded rounded-circle " src="{{Auth::user()->photo ? '/storage/photo_de_profil/'.Auth::user()->id.'/'.Auth::user()->photo->location : asset('img/avatar.png') }}"/>
                         </a>
                         <ul class="dropdown">
                             <li>

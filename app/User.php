@@ -55,4 +55,9 @@ class User extends Authenticatable
     public function enonce_examen(){
         return $this->hasMany('app\Enonce_examen');
     }
+
+    public function photo(){
+        return $this->hasOne('app\Photo');
+    }
+
 }

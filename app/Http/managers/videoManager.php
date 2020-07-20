@@ -7,7 +7,7 @@ use App\User;
 
 class VideoManager{
     public function videoStorage($video){
-        $filefullname=$video->getClientOriginalName();
+        $filefullname=str_replace(' ', '', $video->getClientOriginalName());
         $fileName=pathinfo($filefullname,PATHINFO_FILENAME);
         $extension=$video->getClientOriginalExtension();
         $file=time().'_'.$fileName.'.'.$extension;
@@ -19,6 +19,7 @@ class VideoManager{
         $getID3= new getID3;
        $pathvideo='storage/cours_chapitres/'.Auth::user()->id.'/'.$video;
        $fileanalyse=$getID3->analyze($pathvideo);
+       dd($fileanalyse);
        $playtime=$fileanalyse['playtime_string'];
        return $playtime;
     }

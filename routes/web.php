@@ -135,5 +135,7 @@ Route::get('/mes_cours/{id}/chapitre/{chapitre}','participantController@displayC
 
 // Vue du profil de l'utilisateur
 
-Route::get('/mon profil','participantController@displayPersonalProfile')->name('monprofil');
+Route::get('/monprofil','participantController@displayPersonalProfile')->name('monprofil');
+Route::get('/monprofil/modifier','participantController@updatePersonalProfile')->name('monprofilmodifier');
+Route::put('/monprofil/modifier/sauvegarder','participantController@updatePersonalProfileStore')->name('monprofilmodifiersauvegarder');
 
