@@ -2,6 +2,14 @@
 
 
 @section('content')
+<script type="text/javascript">
+    function choix() {
+        var test1 = document.getElementById("buttonpaiement");
+        var test = document.getElementById("choixpaimentmethode");
+        test.hidden =false;
+        console.log(test1);
+    }
+</script>
 
 <div class="container mb-4 pb-5">
     @if (count(\Cart::session(Auth::user()->id)->getContent())>0)
@@ -71,7 +79,34 @@
                             <a href="{{route('affichercours')}}" class="btn btn-block btn-light">Continuer vos achats</a href="#">
                         </div>
                         <div class="col-sm-12 col-md-6 text-right">
-                            <a href="{{route('payment')}}" class="btn btn-lg btn-block btn-success text-uppercase">Payer</a>
+                            <button id="buttonpaiement" type="submit" class="btn btn-lg btn-block btn-success text-uppercase" onclick="choix();">Payer</button>
+                        </div>
+                        <div id="choixpaimentmethode" class="container" hidden>
+                            <div class="row">
+                                <div class="col-sm">
+                                    <img src="{{ asset('img/paiement-logo/logo-cartes-paiements.jpg') }}" alt="Carte bancaire">
+                                    <div class="col-sm-12 col-md-6 text-right">
+                                        <a href="{{route('payment')}}" class="btn btn-lg btn-block btn-success text-uppercase">Paiement Bancaire</a>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+
+                                    <img src="{{ asset('img/paiement-logo/Airtel-money+logo+HD.jpg') }}" alt="Airtel Money">
+                                    <form class="jumbotron row contact_form" action="https://mypvit.com/airtelmoneypvit.kk" method="POST" id="payment-form1" >
+                                        <div>
+                                            <input type="text" name="tel_marchand" value="04000000" hidden/>
+                                        </div>
+                                        <div>
+                                            <input type="text" name="montant" value= "00XX" hidden/>
+                                        </div>
+                                        <div>
+                                            <input type="text" name="ref" value= "FR0054J7PO478" hidden/>
+                                        </div>
+                                        <input type="text" name="redirect" value="https://monsite.com/page_redirect.php" hidden/>
+                                        <input type="submit" class="btn btn-lg btn-block btn-success text-uppercase" value="Paiement Airtel Money" name="Airtel Money" >
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

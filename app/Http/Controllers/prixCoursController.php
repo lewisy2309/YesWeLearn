@@ -37,7 +37,7 @@ class prixCoursController extends Controller
         $cours=Cours::find($id);
         $cours->prix=$request->input('prix');
         $cours->save();
-        return redirect()->route('contenucoursaccueil',$cours->id)->with('success','Le prix du cour a bien été modifié');
+        return redirect()->route('contenucoursaccueil',$cours->id)->with('success','Le prix du cours a bien été modifié');
 
     }
 

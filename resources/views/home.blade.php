@@ -19,7 +19,7 @@
                     <div class="about-text pt-0 container">
                                 <h3>{{Auth::user()->name}}</h3>
                                 <p><span>Statut:</span> Utilisateur</p>
-                                <p>Niveau <b>{{Auth::user()->niveau->nom}}</b></p>
+                                <p>Niveau <b></b></p>
 
                                 <p><span>Nombres de cours sur la plateforme:</span><p>
 

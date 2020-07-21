@@ -19,6 +19,7 @@ class VideoManager{
         $getID3= new getID3;
        $pathvideo='storage/cours_chapitres/'.Auth::user()->id.'/'.$video;
        $fileanalyse=$getID3->analyze($pathvideo);
+    //    dd($fileanalyse);
        $playtime=$fileanalyse['playtime_string'];
        return $playtime;
     }
