@@ -102,9 +102,11 @@ class participantController extends Controller
         $user=Auth::user();
         $niveau=Niveau::all();
         $photo=Photo::all( );
+        $nbCours=Payment::where('email',Auth::user()->email)->get()->count();
         return view('home',[
             'cours'=>$user,
             'niveau'=>$niveau,
+            'nbCours'=>$nbCours,
             'photo'=>$photo,
         ]);
     }

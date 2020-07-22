@@ -21,7 +21,7 @@
                                 <p><span>Statut:</span> Utilisateur</p>
                                 <p>Niveau <b>{{Auth::user()->niveau->nom}}</b></p>
 
-                                <p><span>Nombres de cours sur la plateforme:</span><p>
+                                 <p><span>Nombres de cours sur la plateforme: {{$nbCours}}</span><p>
 
                                 <div class="col-lg-3">
                                     <a href="{{route('monprofilmodifier')}}" class="primary-btn">
