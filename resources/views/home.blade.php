@@ -18,10 +18,10 @@
                     </div>
                     <div class="about-text pt-0 container">
                                 <h3>{{Auth::user()->name}}</h3>
-                                <p><span>Statut:</span> Utilisateur</p>
-                                <p>Niveau <b>{{Auth::user()->niveau->nom}}</b></p>
+                                <p><span>Statut:</span> {{Auth::user()->statut->statuts_nom}} </p>
+                                <p>Niveau: <b>{{Auth::user()->niveau->nom}}</b></p>
 
-                                 <p><span>Nombres de cours sur la plateforme: {{$nbCours}}</span><p>
+                                 <p><span>Nombres de cours sur la plateforme: <b>{{$nbCours}}</b></span><p>
 
                                 <div class="col-lg-3">
                                     <a href="{{route('monprofilmodifier')}}" class="primary-btn">

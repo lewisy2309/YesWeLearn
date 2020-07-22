@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','niveau_id'
+        'name', 'email', 'password','niveau_id','statut_id'
     ];
 
     /**
@@ -41,7 +41,7 @@ class User extends Authenticatable
     ];
 
     public function statut(){
-        return $this->belongsToMany('app\Statut');
+        return $this->belongsTo('app\Statut');
     }
 
     public function cours(){
