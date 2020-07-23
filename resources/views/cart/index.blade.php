@@ -6,8 +6,10 @@
     function choix() {
         var test1 = document.getElementById("buttonpaiement");
         var test = document.getElementById("choixpaimentmethode");
+        var tt = document.getElementById("montant");
         test.hidden =false;
         console.log(test1);
+        console.log(tt);
     }
 </script>
 
@@ -91,13 +93,13 @@
                                 </div>
                                 <div class="col-sm">
 
-                                    <img src="{{ asset('img/paiement-logo/Airtel-money+logo+HD.jpg') }}" alt="Airtel Money">
+                                    <img src="{{ asset('img/paiement-logo/Airtel-money.jpg') }}" alt="Airtel Money">
                                     <form class="jumbotron row contact_form" action="https://mypvit.com/airtelmoneypvit.kk" method="POST" id="payment-form1" >
                                         <div>
                                             <input type="text" name="tel_marchand" value="04000000" hidden/>
                                         </div>
                                         <div>
-                                            <input type="text" name="montant" value= "00XX" hidden/>
+                                            <input id="montant" type="text" name="montant" value= "{{\Cart::getTotal()+$taxarrondie}}" hidden/>
                                         </div>
                                         <div>
                                             <input type="text" name="ref" value= "FR0054J7PO478" hidden/>
