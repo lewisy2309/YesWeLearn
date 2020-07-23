@@ -207,7 +207,7 @@
             </form>
 
             <div class="text-center text-md-left">
-                <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
+                <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Envoyer</a>
             </div>
             <div class="status"></div>
         </div>

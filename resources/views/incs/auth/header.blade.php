@@ -64,6 +64,14 @@ use App\Payment;
                                     Voir Les sujets d'examens que j'ai rajouté ou en rajouter d'autres
                                 </a>
                             </li>
+                            <hr>
+
+
+                            <li>
+                                <a class="px-2" href=" {{route('demandeprofesseur')}} ">
+                                    Envoyer une demande pour être formateur sur la plateforme
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>

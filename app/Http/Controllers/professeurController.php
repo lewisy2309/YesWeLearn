@@ -181,4 +181,8 @@ class professeurController extends Controller
         ]);
     }
 
+    Public function requestProfesseur(){
+        return view('professeur.demande');
+    }
+
 }

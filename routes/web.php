@@ -49,6 +49,8 @@ Route::get('/professeur/cours/{id}/publier', 'professeurController@publish')->na
 
 Route::get('/professeur/cours/{id}/participants', 'professeurController@displayParticipant')->name('coursparticipants');
 
+Route::get('/professeur/Demande','professeurController@requestProfesseur')->name('demandeprofesseur');
+
 //
 // ROUTES POUR LE PRIX DES COURS
 //
