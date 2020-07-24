@@ -26,8 +26,8 @@
                         <b>{{$user->name}}</b> {{$user->niveau->nom}}
                          <span>{{$user->email}}</span>
                         <div>
-                            <a href="{{route('demandeformateuraccepter',$user->id)}}" role="button" class="btn btn-success">Faire passer administrateur</a>
-                            <a href="{{route('demandeformateurrejeter',$user->id)}}" role="button" class="btn btn-danger">Supprimer l'utilisateur et son contenu </a>
+                            <a href="{{route('upgradespecificutilisateur',$user->id)}}" role="button" class="btn btn-success">Faire passer administrateur</a>
+                            <a href="{{route('supprimerutilisateur',$user->id)}}" role="button" class="btn btn-danger">Supprimer l'utilisateur et son contenu </a>
                         </div>
                     </li>
                 @endforeach

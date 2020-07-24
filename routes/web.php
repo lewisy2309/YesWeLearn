@@ -152,3 +152,10 @@ Route::get('/administrer/demande/{id}/accepter','administrateurController@Instru
 Route::get('/administrer/demande/{id}/rejeter','administrateurController@InstructorDemandReject')->name('demandeformateurrejeter');
 
 Route::get('/administrer/upgrader/utilisateurs','administrateurController@displayUsers')->name('upgradeutilisateur');
+
+Route::get('/administrer/upgrader/utilisateur/{id}','administrateurController@UpgradeUserAdmin')->name('upgradespecificutilisateur');
+
+Route::get('/administrer/supprimer/utilisateur/{id}','administrateurController@deleteUser')->name('supprimerutilisateur');
+
+
+

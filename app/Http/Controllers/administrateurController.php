@@ -90,9 +90,15 @@ class administrateurController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function UpgradeUserAdmin($id)
     {
-        //
+        $user=User::find($id);
+        $user->statut_id=3;
+        $user->save();
+
+        return redirect()->back()->with('success','Cet utilisateur bénéficie désormais des droits administrateur sur la plateforme Yes We Learn');
+
+
     }
 
     /**
@@ -113,8 +119,12 @@ class administrateurController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function deleteUser($id)
     {
-        //
+        $user=User::find($id);
+        $user->delete();
+
+        return redirect()->back()->with('success','utilisateur supprimé de la plateforme');
+
     }
 }
