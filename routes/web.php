@@ -143,3 +143,8 @@ Route::get('/monprofil','participantController@displayPersonalProfile')->name('m
 Route::get('/monprofil/modifier','participantController@updatePersonalProfile')->name('monprofilmodifier');
 Route::put('/monprofil/modifier/sauvegarder','participantController@updatePersonalProfileStore')->name('monprofilmodifiersauvegarder');
 
+// ADMINISTRATION DU SITE
+
+Route::get('/administrer/demandes','administrateurController@displayInstructorDemands')->name('demandeformateur');
+Route::get('/administrer/demande/{id}/accepter','administrateurController@InstructorDemandAccept')->name('demandeformateuraccepter');
+Route::get('/administrer/demande/{id}/rejeter','administrateurController@InstructorDemandReject')->name('demandeformateurrejeter');

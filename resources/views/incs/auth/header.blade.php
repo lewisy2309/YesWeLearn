@@ -29,6 +29,20 @@ use App\Payment;
                             <i class="fas fa-users-cog"></i>
                             admninistrer
                         </a>
+                        <ul class="dropdown px-2 py-3">
+                            <li>
+                                <a  href="{{route('demandeformateur')}}">
+                                    Voir les demandes de Professeur à intégrer la plateforme
+                                </a>
+                            </li>
+                            <hr>
+
+                            <li>
+                                <a class="px-2" href="#">
+                                    Upgrader un utilisateur
+                                </a>
+                            </li>
+                        </ul>
                     </li>
 
                     <li>

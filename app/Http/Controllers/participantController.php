@@ -6,6 +6,7 @@ use App\User;
 use App\Cours;
 use App\Photo;
 use App\Niveau;
+use App\Statut;
 use App\Matiere;
 use App\Payment;
 use App\Chapitre;
