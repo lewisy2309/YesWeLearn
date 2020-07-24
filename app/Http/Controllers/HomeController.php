@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Cours;
+use App\Photo;
+use App\Niveau;
+use App\Statut;
+use App\Payment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +29,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $cours=Cours::all();
+        $niveau=Niveau::all();
+        $statut=Statut::all();
+        $nbCours=Payment::where('email',Auth::user()->email)->get()->count();
+        $photo=Photo::where('user_id',Auth::user()->id)->get();
+        return view('home', [
+            'niveau'=>$niveau,
+            'photo'=>$photo,
+            'nbCours'=>$nbCours,
+            'statut'=>$statut,
+            'cours'=>$cours
+        ]);
     }
 }

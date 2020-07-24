@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Cours;
+use App\Photo;
 use App\Niveau;
+use App\Statut;
 use App\Matiere;
 use App\Payment;
 use App\Chapitre;
@@ -100,9 +102,15 @@ class participantController extends Controller
     public function displayPersonalProfile(){
         $user=Auth::user();
         $niveau=Niveau::all();
+        $photo=Photo::all( );
+        $statut=Statut::all();
+        $nbCours=Payment::where('email',Auth::user()->email)->get()->count();
         return view('home',[
             'cours'=>$user,
-            'niveau'=>$niveau
+            'niveau'=>$niveau,
+            'nbCours'=>$nbCours,
+            'statut'=>$statut,
+            'photo'=>$photo,
         ]);
     }
     /**
@@ -112,9 +120,51 @@ class participantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updatePersonalProfile(Request $request )
     {
-        //
+        $niveaux=Niveau::all();
+        return view ('participant.updatePersonalInformation',[
+
+            'niveaux'=>$niveaux
+        ]);
+    }
+
+    public function updatePersonalProfileStore(Request $request )
+    {
+        $user=User::find(Auth::user()->id);
+        $photo=Photo::where('user_id',Auth::user()->id)->firstOrFail();
+        $user->name=$request->input('user_nom');
+        $user->niveau_id=$request->input('niveau');
+        if($request->file('photo_de_profil')){
+            if($photo->count()>0 ){
+
+            $image =$request->file('photo_de_profil');
+            $imageFullName= $image->getClientOriginalName();
+            $imageName=pathInfo($imageFullName, PATHINFO_FILENAME );
+            $extension=$image->getClientOriginalExtension();
+            $file = time().'_'.$imageName.'.'.$extension;
+            $image->storeAs('public/photo_de_profil/'. Auth::user()->id , $file);
+            $photo->location=$file;
+            $photo->save();
+
+         }
+         else {
+            $photo=new Photo;
+            $image =$request->file('photo_de_profil');
+            $imageFullName= $image->getClientOriginalName();
+            $imageName=pathInfo($imageFullName, PATHINFO_FILENAME );
+            $extension=$image->getClientOriginalExtension();
+            $file = time().'_'.$imageName.'.'.$extension;
+            $image->storeAs('public/photo_de_profil/'. Auth::user()->id , $file);
+            $photo->location=$file;
+            $photo->user_id=Auth::user()->id;
+            $photo->save();
+         }
+        }
+
+        $user->save();
+        return redirect()->route('home')->with('success', 'informations modifiées');
+
     }
 
     /**

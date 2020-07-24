@@ -207,7 +207,7 @@
             </form>
 
             <div class="text-center text-md-left">
-                <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
+                <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Envoyer</a>
             </div>
             <div class="status"></div>
         </div>
@@ -244,7 +244,7 @@
         <div class="newslatter-inner set-bg" data-setbg="img/newslatter-bg.jpg">
             <div class="ni-text">
                 <h3>S'abonner à notre newsletter</h3>
-                <p>Restez informé des derniers cours mis en ligne !</p>
+                <p>Restez informés des derniers cours mis en ligne !</p>
             </div>
             <form action="#" method="POST" class="ni-form">
                 <input type="text" placeholder="Votre adresse email" name="email">

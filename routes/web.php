@@ -49,6 +49,10 @@ Route::get('/professeur/cours/{id}/publier', 'professeurController@publish')->na
 
 Route::get('/professeur/cours/{id}/participants', 'professeurController@displayParticipant')->name('coursparticipants');
 
+Route::get('/professeur/Demande','professeurController@requestProfesseur')->name('demandeprofesseur');
+
+Route::get('/professeur/Demande/envoie','professeurController@requestProfesseurSend')->name('demandeprofesseurenvoie');
+
 //
 // ROUTES POUR LE PRIX DES COURS
 //
@@ -135,5 +139,23 @@ Route::get('/mes_cours/{id}/chapitre/{chapitre}','participantController@displayC
 
 // Vue du profil de l'utilisateur
 
-Route::get('/mon profil','participantController@displayPersonalProfile')->name('monprofil');
+Route::get('/monprofil','participantController@displayPersonalProfile')->name('monprofil');
+Route::get('/monprofil/modifier','participantController@updatePersonalProfile')->name('monprofilmodifier');
+Route::put('/monprofil/modifier/sauvegarder','participantController@updatePersonalProfileStore')->name('monprofilmodifiersauvegarder');
+
+// ADMINISTRATION DU SITE
+
+Route::get('/administrer/demandes','administrateurController@displayInstructorDemands')->name('demandeformateur');
+
+Route::get('/administrer/demande/{id}/accepter','administrateurController@InstructorDemandAccept')->name('demandeformateuraccepter');
+
+Route::get('/administrer/demande/{id}/rejeter','administrateurController@InstructorDemandReject')->name('demandeformateurrejeter');
+
+Route::get('/administrer/upgrader/utilisateurs','administrateurController@displayUsers')->name('upgradeutilisateur');
+
+Route::get('/administrer/upgrader/utilisateur/{id}','administrateurController@UpgradeUserAdmin')->name('upgradespecificutilisateur');
+
+Route::get('/administrer/supprimer/utilisateur/{id}','administrateurController@deleteUser')->name('supprimerutilisateur');
+
+
 

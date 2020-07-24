@@ -27,7 +27,7 @@
                                 <p>Niveau: <span class="tag">{{$achat->cours->niveau->nom}}</span><p>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-3" >
                             <a href="{{route('moncours',
                             ['id'=>$achat->cours->id,
                             'slug'=>$achat->cours->slug])}}" class="primary-btn">

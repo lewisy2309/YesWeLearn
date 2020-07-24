@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStatutUserTable extends Migration
+class CreateDemandeProfesseursTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateStatutUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('statut_user', function (Blueprint $table) {
+        Schema::create('demande_professeurs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('statut_id');
-            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+            $table->unsignedBigInteger('user_id');
         });
     }
 
@@ -28,6 +27,6 @@ class CreateStatutUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('statut_user');
+        Schema::dropIfExists('demande_professeurs');
     }
 }

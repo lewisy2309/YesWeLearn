@@ -14,25 +14,25 @@
                         </div>
                     @endif
                     <div class="container">
-                     <img class="border-rounded rounded-circle profile-picture" src="https://uploads-ssl.webflow.com/5bddf05642686caf6d17eb58/5dc2fd00c29f7abeadd7c332_gPZwCbdS.jpg"/>
+                     <img class="border-rounded rounded-circle profile-picture" src="{{Auth::user()->photo ? '/storage/photo_de_profil/'.Auth::user()->id.'/'.Auth::user()->photo->location : asset('img/avatar.png') }}"/>
                     </div>
                     <div class="about-text pt-0 container">
                                 <h3>{{Auth::user()->name}}</h3>
-                                <p><span>Statut:</span> Utilisateur</p>
-                                <p>Niveau <b></b></p>
+                                <p><span>Statut:</span> {{Auth::user()->statut->statuts_nom}} </p>
+                                <p>Niveau: <b>{{Auth::user()->niveau->nom}}</b></p>
 
-                                <p><span>Nombres de cours sur la plateforme:</span><p>
+                                 <p><span>Nombres de cours sur la plateforme: <b>{{$nbCours}}</b></span><p>
 
                                 <div class="col-lg-3">
-                                    <a href="#" class="primary-btn">
-                                        Continuer
-                                        <i class="fas fa-arrow-right"></i>
+                                    <a href="{{route('monprofilmodifier')}}" class="primary-btn">
+                                        Modifier ses informations personnelles
+                                        <i class="fas fa-edit"></i>
                                     </a>
                                 </div>
                     </div>
 
                 </div>
-                You are logged in!
+                Vous êtes connecté!
             </div>
         </div>
     </div>

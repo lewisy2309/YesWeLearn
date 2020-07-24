@@ -7,6 +7,7 @@ use App\Niveau;
 use App\Matiere;
 use App\Payment;
 use App\Chapitre;
+use App\DemandeProfesseur;
 use Cocur\Slugify\Slugify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -179,6 +180,21 @@ class professeurController extends Controller
             'cours'=>$cours,
             'payments'=>$payment
         ]);
+    }
+
+    Public function requestProfesseur(){
+        $demandes=DemandeProfesseur::where('user_id',Auth::user()->id)->get();
+        return view('professeur.demande',[
+            'demandes'=>$demandes
+        ]);
+    }
+
+    Public function requestProfesseurSend(){
+
+        $demande=New DemandeProfesseur;
+        $demande->user_id=Auth::user()->id;
+        $demande->save();
+        return redirect()->back()->with('success','Votre Demannde pour devenir formateur au sein de la plateforme a bien été prise en compte');
     }
 
 }

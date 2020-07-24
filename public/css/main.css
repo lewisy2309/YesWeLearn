@@ -244,3 +244,38 @@ FORMULAIRE DE PAYMENT
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
 }
+
+
+
+.bgcontain{
+    background-size: contain;
+}
+
+.white-colored{
+    color: #ffffff;
+}
+
+.icon-presentation{
+    width: 30%;
+}
+
+.demande-sous-titre{
+    margin-top: 15px;
+    font-size: 15px;
+}
+
+.demande-sous-titre-description{
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.title-after::after{position:absolute;
+    content:"";
+    padding:0;
+    background-color: greenyellow;
+    margin:0;
+    border:1px solid greenyellow;
+    left:calc(50% - 40px);
+    width:80px;
+    top:100px;
+    }
