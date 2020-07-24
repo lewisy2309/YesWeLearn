@@ -10,8 +10,14 @@
                     <h2 class="white-colored">Participez à l'expension de l'éducation avec <span class="academia">Yes We Learn GABON</span></h2>
                     <p class="white-colored">Créez vos cours et Monétisez votre savoir et votre expérience tout en aidant l'élite de demain à accéder au savoir</p>
 
-                    <a href="#" class="btn primary-btn my-5 btn-success">Devenir formateur au sein de la plateforme</a>
-                </div>
+                    @if ($demandes->count()<0)
+                    <a href="{{route('demandeprofesseurenvoie')}}" class="btn primary-btn my-5 btn-success">Devenir formateur au sein de la plateforme</a>
+                    @else
+                    <p class="btn btn-primary btn-success">
+                        <i class="fas fa-check-double"></i>
+                        Votre demande pour être formateur au sein de la plateforme a bien été pris en compte et est actuellement en attente
+                    </p>
+                    @endif</div>
             </div>
         </div>
     </div>
@@ -64,8 +70,15 @@
                         <li class="list-group-item">5-Encaissez vos revenus</li>
 
                     </ul>
-                    <a href="#" class="btn primary-btn my-5 btn-success">Devenir formateur au sein de la plateforme</a>
-                </div>
+                    @if ($demandes->count()<0)
+                    <a href="{{route('demandeprofesseurenvoie')}}" class="btn primary-btn my-5 btn-success">Devenir formateur au sein de la plateforme</a>
+                    @else
+                    <p class="btn btn-primary btn-success">
+                        <i class="fas fa-check-double"></i>
+                        Votre demande pour être formateur au sein de la plateforme a bien été pris en compte et est actuellement en attente
+                    </p>
+                    @endif
+                   </div>
             </div>
         </div>
     </div>

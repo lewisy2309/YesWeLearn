@@ -51,6 +51,8 @@ Route::get('/professeur/cours/{id}/participants', 'professeurController@displayP
 
 Route::get('/professeur/Demande','professeurController@requestProfesseur')->name('demandeprofesseur');
 
+Route::get('/professeur/Demande/envoie','professeurController@requestProfesseurSend')->name('demandeprofesseurenvoie');
+
 //
 // ROUTES POUR LE PRIX DES COURS
 //
