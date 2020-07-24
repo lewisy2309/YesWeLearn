@@ -38,7 +38,7 @@ use App\Payment;
                             <hr>
 
                             <li>
-                                <a class="px-2" href="#">
+                                <a class="px-2" href="{{route('upgradeutilisateur')}}">
                                     Upgrader un utilisateur
                                 </a>
                             </li>

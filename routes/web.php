@@ -146,5 +146,9 @@ Route::put('/monprofil/modifier/sauvegarder','participantController@updatePerson
 // ADMINISTRATION DU SITE
 
 Route::get('/administrer/demandes','administrateurController@displayInstructorDemands')->name('demandeformateur');
+
 Route::get('/administrer/demande/{id}/accepter','administrateurController@InstructorDemandAccept')->name('demandeformateuraccepter');
+
 Route::get('/administrer/demande/{id}/rejeter','administrateurController@InstructorDemandReject')->name('demandeformateurrejeter');
+
+Route::get('/administrer/upgrader/utilisateurs','administrateurController@displayUsers')->name('upgradeutilisateur');

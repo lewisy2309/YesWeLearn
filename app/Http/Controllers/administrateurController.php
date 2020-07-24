@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 
 class administrateurController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -56,7 +60,10 @@ class administrateurController extends Controller
      */
     public function InstructorDemandReject($id)
     {
-        //
+        $demande=DemandeProfesseur::find($id);
+        $demande->delete();
+
+        return redirect()->back()->with('success','Cet utilisateur est désormais un formateur de la plateforme Yes We Learn');
     }
 
     /**
@@ -65,9 +72,16 @@ class administrateurController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function displayUsers()
     {
-        //
+       $users=User::where('statut_id',1)->get();
+       $photo=Photo::all();
+        $niveau=Niveau::all();
+       return view('admin.upgradeUser.index',[
+           'users'=>$users,
+           'photo'=>$photo,
+            'niveau'=>$niveau
+       ]);
     }
 
     /**

@@ -24,6 +24,7 @@
                     <li class="list-group-item d-flex flex-row justify-content-between">
                         <img class="avatar-profile border-rounded rounded-circle " src="{{$demande->user->photo ? '/storage/photo_de_profil/'.$demande->user->id.'/'.$demande->user->photo->location : asset('img/avatar.png') }}"/>
                         <b>{{$demande->user->name}}</b> {{$demande->user->niveau->nom}}
+                        <span>{{$demande->user->email}}</span>
                         <div>
                             <a href="{{route('demandeformateuraccepter',$demande->id)}}" role="button" class="btn btn-success">Accepter</a>
                             <a href="{{route('demandeformateurrejeter',$demande->id)}}" role="button" class="btn btn-danger">Refuser</a>
