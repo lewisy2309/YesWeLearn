@@ -132,12 +132,12 @@ class participantController extends Controller
     public function updatePersonalProfileStore(Request $request )
     {
         $user=User::find(Auth::user()->id);
-        $photo=Photo::where('user_id',Auth::user()->id)->firstOrFail();
+        $photo=Photo::where('user_id',Auth::user()->id)->get();
         $user->name=$request->input('user_nom');
         $user->niveau_id=$request->input('niveau');
         if($request->file('photo_de_profil')){
             if($photo->count()>0 ){
-
+            $photo=Photo::where('user_id',Auth::user()->id)->FirstOrFail();
             $image =$request->file('photo_de_profil');
             $imageFullName= $image->getClientOriginalName();
             $imageName=pathInfo($imageFullName, PATHINFO_FILENAME );
