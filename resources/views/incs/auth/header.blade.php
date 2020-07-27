@@ -2,12 +2,14 @@
 
 use App\Cours;
 use App\Photo;
+use App\Statut;
 use App\Payment;
 
 
     $cours=Cours::all();
     $coursUser= Payment::where('email',Auth::user()->email)->limit(4)->get();
     $photo=Photo::all();
+    $statut=Statut::all();
 
 
 @endphp
@@ -23,6 +25,8 @@ use App\Payment;
                             Accueil
                         </a>
                     </li>
+                    @if (Auth::user()->statut_id===3)
+
 
                     <li class="">
                         <a href="{{route('acceuil')}}">
@@ -44,7 +48,7 @@ use App\Payment;
                             </li>
                         </ul>
                     </li>
-
+                    @endif
                     <li>
                         <a href="{{route('affichercours')}}">
                             <i class="fas fa-ellipsis-v"></i>
@@ -66,6 +70,9 @@ use App\Payment;
                             Formateur
                         </a>
                         <ul class="dropdown px-2 py-3">
+                            @if (Auth::user()->statut_id===2 || Auth::user()->statut_id===3)
+
+
                             <li>
                                 <a  href=" {{route('vueprofilprofesseur')}} ">
                                     Voir mes cours ou ajouter un nouveau cours
@@ -80,7 +87,7 @@ use App\Payment;
                             </li>
                             <hr>
 
-
+                            @endif
                             <li>
                                 <a class="px-2" href=" {{route('demandeprofesseur')}} ">
                                     Envoyer une demande pour être formateur sur la plateforme
