@@ -10,7 +10,7 @@
                     <h2 class="white-colored">Participez à l'expension de l'éducation avec <span class="academia">Yes We Learn GABON</span></h2>
                     <p class="white-colored">Créez vos cours et Monétisez votre savoir et votre expérience tout en aidant l'élite de demain à accéder au savoir</p>
 
-                    @if ($demandes->count()<0)
+                    @if ($demandes->count()<=0)
                     <a href="{{route('demandeprofesseurenvoie')}}" class="btn primary-btn my-5 btn-success">Devenir formateur au sein de la plateforme</a>
                     @else
                     <p class="btn btn-primary btn-success">

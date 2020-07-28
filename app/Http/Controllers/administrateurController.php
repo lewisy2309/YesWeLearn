@@ -7,6 +7,8 @@ use App\Photo;
 use App\Niveau;
 use App\DemandeProfesseur;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+
 
 class administrateurController extends Controller
 {
@@ -21,6 +23,7 @@ class administrateurController extends Controller
      */
     public function displayInstructorDemands()
     {
+        $this->authorize('view',DemandeProfesseur::class);
         $demandes=DemandeProfesseur::all();
         $user=User::all();
         $photo=Photo::all();
@@ -41,7 +44,7 @@ class administrateurController extends Controller
      */
     public function InstructorDemandAccept($id)
     {
-
+        $this->authorize('accept',DemandeProfesseur::class);
         $demande=DemandeProfesseur::find($id);
         $user=User::find($demande->user_id);
         $user->statut_id=2;
@@ -60,6 +63,7 @@ class administrateurController extends Controller
      */
     public function InstructorDemandReject($id)
     {
+        $this->authorize('reject',DemandeProfesseur::class);
         $demande=DemandeProfesseur::find($id);
         $demande->delete();
 
@@ -74,6 +78,7 @@ class administrateurController extends Controller
      */
     public function displayUsers()
     {
+    $this->authorize('view',DemandeProfesseur::class);
        $users=User::where('statut_id',1)->get();
        $photo=Photo::all();
         $niveau=Niveau::all();
@@ -91,7 +96,7 @@ class administrateurController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function UpgradeUserAdmin($id)
-    {
+    {   $this->authorize('accept',DemandeProfesseur::class);
         $user=User::find($id);
         $user->statut_id=3;
         $user->save();
@@ -120,7 +125,7 @@ class administrateurController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function deleteUser($id)
-    {
+    {   $this->authorize('accept',DemandeProfesseur::class);
         $user=User::find($id);
         $user->delete();
 
