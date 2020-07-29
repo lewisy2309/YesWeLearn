@@ -102,9 +102,11 @@ class professeurController extends Controller
      */
     public function edit($id)
     {
+        $cours=Cours::find($id);
+        $this->authorize('view',$cours);
         $matieres=Matiere::all();
         $niveaux=Niveau::all();
-        $cours=Cours::find($id);
+
         return view('professeur.edit',[
             'cours'=>$cours,
             'matieres'=>$matieres,
@@ -122,7 +124,9 @@ class professeurController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $cours=Cours::find($id);
+        $this->authorize('update',$cours);
         $slugify= new slugify();
         $cours->nom=$request->input('nom');
         $cours->slug=$slugify->slugify('nom');
@@ -153,13 +157,16 @@ class professeurController extends Controller
      */
     public function destroy($id)
     {
+
         $cours=Cours::find($id);
+        $this->authorize('delete',$cours);
         $cours->delete();
         return redirect()->route('vueprofilprofesseur')->with('success', 'Le cours a bien été supprimé');
     }
 
     public function publish($id){
         $cours= Cours::find($id);
+        $this->authorize('update',$cours);
         $chapitre=Chapitre::all();
 
 
@@ -175,6 +182,7 @@ class professeurController extends Controller
 
     public function displayParticipant($id){
         $cours=Cours::find($id);
+        $this->authorize('view',$cours);
         $payment=Payment::where('cours_id', $cours->id)->get();
         return view('professeur.participant',[
             'cours'=>$cours,

@@ -88,11 +88,13 @@ use App\Payment;
                             <hr>
 
                             @endif
-                            <li>
-                                <a class="px-2" href=" {{route('demandeprofesseur')}} ">
-                                    Envoyer une demande pour être formateur sur la plateforme
-                                </a>
-                            </li>
+                            @if (Auth::user()->statut_id===1)
+                                <li>
+                                    <a class="px-2" href=" {{route('demandeprofesseur')}} ">
+                                        Envoyer une demande pour être formateur sur la plateforme
+                                    </a>
+                                </li>
+                            @endif
                         </ul>
                     </li>
                     <li>

@@ -31,6 +31,7 @@ class contenucoursController extends Controller
     public function index($id)
     {
         $cours=Cours::find($id);
+        $this->authorize('view',$cours);
         $chapitre=Chapitre::all();
         return view('professeur.contenucours.index',[
             'cours'=>$cours
@@ -45,6 +46,7 @@ class contenucoursController extends Controller
     public function create($id)
     {
         $cours=Cours::find($id);
+        $this->authorize('update',$cours);
         return view('professeur.contenucours.create',[
             'cours'=>$cours
         ]);
@@ -62,7 +64,7 @@ class contenucoursController extends Controller
        $slugify= new Slugify();
        $chapitre= new Chapitre();
        $cours=Cours::find($id);
-
+       $this->authorize('update',$cours);
        $chapitre->nom=$request->input('chapitre_nom');
        $chapitre->slug=$slugify->slugify($chapitre->nom);
 
@@ -103,6 +105,7 @@ class contenucoursController extends Controller
     public function edit($id , $chapitre_id)
     {
         $cours=Cours::find($id);
+        $this->authorize('update',$cours);
         $chapitre=Chapitre::find($chapitre_id);
         return view('professeur.contenucours.edit',[
             'cours'=>$cours,
@@ -121,6 +124,7 @@ class contenucoursController extends Controller
     {
         $slugify=new Slugify();
         $cours=Cours::find($id);
+        $this->authorize('update',$cours);
         $chapitre=Chapitre::find($chapitre_id);
         if($request->input('chapitre_nom')){
             // mise à jour du nom du chapitre
@@ -150,6 +154,7 @@ class contenucoursController extends Controller
     public function destroy($id,$chapitre_id)
     {
         $cours=Cours::find($id);
+        $this->authorize('delete',$cours);
         $chapitre=Chapitre::find($chapitre_id);
         $fichierasupprimer='public/cours_chapitres/'.Auth::user()->id.'/'.$chapitre->video;
         if(Storage::exists($fichierasupprimer)){
