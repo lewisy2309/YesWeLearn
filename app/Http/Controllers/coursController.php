@@ -90,9 +90,16 @@ class coursController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function filter($id)
     {
-        //
+        $matiere=Matiere::find($id);
+        $niveau=Niveau::all();
+        $cours=Cours::where('matiere_id',$matiere->id)->where('public',true)->get();
+        return view('cours.index',[
+            'matieres'=>$matiere,
+            'cours'=>$cours,
+            'niveau'=>$niveau
+        ]);
     }
 
     /**

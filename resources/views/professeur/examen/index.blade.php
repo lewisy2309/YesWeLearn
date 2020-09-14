@@ -34,7 +34,7 @@
                 @endforeach
             @else
 
-                <div class="jumbotron center"> En tant que professeur vous pouvez aider Academia à pouvoir avoir accès à tous les sujets des précédents examens en ajoutant un sujet ici</div>
+                <div class="jumbotron center"> En tant que professeur vous pouvez mettre en vente vos corrections proposées aux sujets des précédents examens ici!</div>
 
             @endif
 

@@ -121,7 +121,7 @@
         @else
             <div class="emptycart text-center">
                 <i class="fas fa-shopping-cart fa-6x"></i>
-                <h4 class="my-5"> Vous n'avez aucun cours pour le moment dans votre panier, Continuez vos achats sur la plateforme AcademiA et trouvez les cours qui vous correspondent</h4>
+                <h4 class="my-5"> Vous n'avez aucun cours pour le moment dans votre panier, Continuez vos achats sur la plateforme Yes We Learn Gabon et trouvez les cours qui vous correspondent</h4>
                 <a href="{{route('affichercours')}}" class="primary-btn">
                     Les Cours
                     <i class="fas fa-arrow-right ml-2"></i>
@@ -161,7 +161,7 @@
     @else
         <div class="emptycart text-center">
             <i class="fas fa-heart fa-3x"></i>
-            <h4 class="my-5"> Vous n'avez pas encore eut de coup de couer sur la plateforme AcademiA, Continuez vos achats et regarder les cours qui vous plaisent</h4>
+            <h4 class="my-5"> Vous n'avez pas encore eut de coup de coeur sur la plateforme Yes We Learn Gabon, Continuez vos achats et regarder les cours qui vous plaisent</h4>
             <a href="{{route('affichercours')}}" class="primary-btn">
                 Les Cours
                 <i class="fas fa-arrow-right ml-2"></i>

@@ -106,7 +106,7 @@ class coupDeCoeurController extends Controller
 
 
         \Cart::session(Auth::user()->id.'_coupDeCoeur')->clear();
-        return redirect()->route('panierafficher')->with('success', "Vous venez de vider votre liste de coup de coeur mais ne vous inquiétez pas, chacun trouve son compte sur AcademiA");
+        return redirect()->route('panierafficher')->with('success', "Vous venez de vider votre liste de coup de coeur mais ne vous inquiétez pas, chacun trouve son compte sur Yes We Learn Gabon");
     }
 
     /**

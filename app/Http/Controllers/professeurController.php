@@ -176,7 +176,7 @@ class professeurController extends Controller
             $cours->save();
             return redirect()->back()->with('success','Votre cours a bien été mis en ligne');
         } else{
-            return redirect()->back()->with('danger', 'Pour être publié sur la plateforme academia, votre cours doit avoir au moins un chapitre et un tarif');
+            return redirect()->back()->with('danger', 'Pour être publié sur la plateforme Yes We Learn Gabon, votre cours doit avoir au moins un chapitre et un tarif');
          }
     }
 

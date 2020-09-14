@@ -71,7 +71,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <h2>Quelques cours pouvant vous intéresser qui sont présents sur la Plateforme <span>AcademiA</span></h2>
+                    <h2>Quelques cours pouvant vous intéresser qui sont présents sur la Plateforme <span>Yes We Learn Gabon</span></h2>
                 </div>
             </div>
         </div>

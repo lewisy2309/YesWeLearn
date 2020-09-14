@@ -108,7 +108,7 @@ class panierController extends Controller
     public function clear()
     {
         \Cart::session(Auth::user()->id)->clear();
-        return redirect()->route('panierafficher')->with('success', "Vous venez de vider votre panier mais ne vous inquiétez pas, chacun trouve son compte sur AcademiA");
+        return redirect()->route('panierafficher')->with('success', "Vous venez de vider votre panier mais ne vous inquiétez pas, chacun trouve son compte sur Yes We Learn Gabon");
     }
 
      /**

@@ -8,7 +8,7 @@
             <div class="col-lg-12">
                 <div class="section-title">
                     <h2>Cours pour commencer</h2>
-                    <p class="f-para">There are several ways people can make money online. From selling products to advertising. In this article I am going to explain the concept of contextual advertising.</p>
+                    <p class="f-para">Commencer votre apprentissage d'où vous voulez avec Yes We Learn Gabon.</p>
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
                             <div class="col-lg-4">
                                 <div class="about-pic">
                                     <a href="{{route('affichercoursparticulier', $elementcours->slug)}}">
-                                    <img src="storage/cours/{{$elementcours->user_id}}/{{$elementcours->image}}" alt="Course img">
+                                    <img src="storage/cours/{{$elementcours->user_id}}/{{$elementcours->image}}" alt="Coursimg">
                                     </a>
                                 </div>
                             </div>

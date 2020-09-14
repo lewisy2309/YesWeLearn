@@ -29,7 +29,7 @@ use App\Payment;
 
 
                     <li class="">
-                        <a href="{{route('acceuil')}}">
+                        <a href="{{route('demandeformateur')}}">
                             <i class="fas fa-users-cog"></i>
                             admninistrer
                         </a>
@@ -55,17 +55,19 @@ use App\Payment;
                             Suivre un cours
                         </a>
                         <ul class="dropdown px-2 py-3">
-                            <li>
-                                <a href="#">
-                                    Catégorie
-                                </a>
-                            </li>
+                            @foreach (\App\Matiere::all() as $matiere)
+                                <li>
+                                    <a href="{{route('coursfiltrer',$matiere->id)}}">
+                                       {{$matiere->nom}}
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
                     </li>
                     <li>
                     </li>
                     <li>
-                        <a href="#" >
+                        <a href="{{route('vueprofilprofesseur')}}" >
                             <i class="fas fa-chalkboard-teacher"></i>
                             Formateur
                         </a>
